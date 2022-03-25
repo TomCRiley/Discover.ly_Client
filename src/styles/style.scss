@@ -1,1 +1,35 @@
 @import '~bulma/bulma.sass';
+
+label {
+  font-weight: bold;
+  display: flex;
+}
+
+input,
+select,
+textarea {
+  padding: 0.65rem 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #edf2f7;
+  background-color: #f7fafc;
+  color: #2d3748;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 400px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #2d3748;
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+  border: 2px solid #ff7d87;
+  box-shadow: none;
+}
