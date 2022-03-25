@@ -32,8 +32,9 @@ const Navbar = () => {
                   <span>About Us</span>
                 </a>
               </p>
-              <p className="control">
-                <a className="button is-success " href="/signup">
+
+              <p class='control'>
+                <a class='button is-success is-outlined ' href='/signup'>
                   <span>Sign Up</span>
                 </a>
               </p>
