@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 
 import '../styles/style.scss';
+import ShowSpot from './ShowSpot';
 
 const App = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const App = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/spots/:id" element={<ShowSpot />} />
     </Routes>
   </BrowserRouter>
 );
