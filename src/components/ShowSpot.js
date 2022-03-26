@@ -18,7 +18,8 @@ const ShowSpot = () => {
   const handleLike = async (e) => {
     e.preventDefault();
     const data = await likeSpot(id);
-    setSpot(data);
+    console.log(data);
+    setSpot(data.data);
   };
 
   if (!spot) {
@@ -26,7 +27,7 @@ const ShowSpot = () => {
   }
 
   return (
-    <div className="container show-single-spot">
+    <div className="container full-height-content">
       <div className="columns">
         <div className="column is-half">
           <figure className="image">
@@ -45,7 +46,7 @@ const ShowSpot = () => {
             <span className="icon">
               <i className="fas fa-heart"></i>
             </span>
-            <span>{spot.likedBy.length}</span>
+            <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
           </button>
         </div>
       </div>

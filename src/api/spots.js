@@ -35,7 +35,7 @@ export const getUserById = async (userId) => {
 
 export const likeSpot = async (id) => {
   const options = {
-    method: 'GET',
+    method: 'PUT',
     url: `/api/spots/${id}/likes`,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
