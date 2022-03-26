@@ -26,7 +26,7 @@ const ShowSpot = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container show-single-spot">
       <div className="columns">
         <div className="column is-half">
           <figure className="image">
