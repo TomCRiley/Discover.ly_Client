@@ -18,22 +18,22 @@ const Home = () => {
   //state for updating the cards that show example discoveries?
   return (
     <>
-      <section class='hero is-transparent is-fullheight-with-navbar'>
-        <div class='hero-body'>
-          <div class='columns'>
-            <div class='column is-6'>
+      <section className="hero is-transparent is-fullheight-with-navbar">
+        <div className="hero-body">
+          <div className="columns">
+            <div className="column is-6">
               <img
-                className='hero-image'
+                className="hero-image"
                 src={LogoColoured}
-                alt='large hero logo'
+                alt="large hero logo"
               />
             </div>
-            <div class='column notification notification is-success is-light is-5'>
-              <h1 id='hero-title'>Discover.ly</h1>
-              <h2 id='hero-subtitle'>
+            <div className="column notification notification is-success is-light is-5">
+              <h1 id="hero-title">Discover.ly</h1>
+              <h2 id="hero-subtitle">
                 Uncover the world around you with Discover.ly
               </h2>
-              <p id='p-about-discoverly'>
+              <p id="p-about-discoverly">
                 Discover.ly is a social discovery app for those who like to get
                 lost. Stumble across an untouched beach? How about when you took
                 that left turn that you never do on your daily run. Discover the
@@ -42,7 +42,6 @@ const Home = () => {
               </p>
             </div>
           </div>
-
         </div>
       </section>
       <section>

@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav className="navbar is-transparent">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/home">
+        <a className="navbar-item" href="/">
           <img
             src={LogoColouredSmall}
             alt="Small Discover.ly Logo"
@@ -33,8 +33,8 @@ const Navbar = () => {
                 </a>
               </p>
 
-              <p class='control'>
-                <a class='button is-success is-outlined ' href='/signup'>
+              <p className="control">
+                <a className="button is-success is-outlined " href="/signup">
                   <span>Sign Up</span>
                 </a>
               </p>
