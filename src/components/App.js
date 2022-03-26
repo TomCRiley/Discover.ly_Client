@@ -4,9 +4,10 @@ import Register from './Register';
 
 import Navbar from './Navbar';
 import Home from './Home';
+import ShowSpot from './ShowSpot';
+import Footer from './Footer';
 
 import '../styles/style.scss';
-import ShowSpot from './ShowSpot';
 
 const App = () => (
   <BrowserRouter>
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/spots/:id" element={<ShowSpot />} />
     </Routes>
+    <Footer />
   </BrowserRouter>
 );
 export default App;
