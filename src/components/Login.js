@@ -32,7 +32,7 @@ const Login = () => {
       <form onSubmit={handleSubmit}>
         <div className="field">
           <label className="label">Email or Username</label>
-          <div className="control">
+          <div className="control has-icons-left">
             <input
               type="text"
               className="input"
@@ -41,12 +41,15 @@ const Login = () => {
               onChange={handleChange}
               value={formData.email}
             />
+            <span className="icon is-left">
+              <i className="fas fa-envelope"></i>
+            </span>
           </div>
         </div>
 
         <div className="field">
           <label className="label">Password</label>
-          <div className="control">
+          <div className="control has-icons-left">
             <input
               type="password"
               className="input"
@@ -55,11 +58,14 @@ const Login = () => {
               onChange={handleChange}
               value={formData.password}
             />
+            <span className="icon is-left">
+              <i className="fas fa-lock"></i>
+            </span>
           </div>
         </div>
 
         <div className="field">
-          <button type="submit" className="button">
+          <button type="submit" className="button is-success">
             Log in
           </button>
         </div>

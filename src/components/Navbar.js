@@ -34,8 +34,8 @@ const Navbar = () => {
               </p>
 
               <p className="control">
-                <a className="button is-success is-outlined " href="/signup">
-                  <span>Sign Up</span>
+                <a className="button is-success is-outlined " href="/login">
+                  <span>Log In</span>
                 </a>
               </p>
             </div>
