@@ -70,6 +70,13 @@ const Login = () => {
           </button>
         </div>
       </form>
+      <br />
+      <p className="control">
+        <span>Don&apos;t have an account yet? </span>
+        <a href="/register">
+          <span>Sign up</span>
+        </a>
+      </p>
     </div>
   );
 };
