@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
 import 'bulma';
 import presetDefault from '../assets/images/profileDefault.jpg';
+import { Navigate } from 'react-router-dom';
 
-export default function Register({ history }) {
+export default function Register() {
   const [imageDisplay, updateImageDisplay] = useState(presetDefault);
   const [formData, updateFormData] = useState({
     username: '',
@@ -13,20 +15,32 @@ export default function Register({ history }) {
     passwordConfirmation: '',
   });
 
+  const [errors, updateErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+  });
+
   function handleChange(e) {
     const { name, value } = e.target;
     updateFormData({ ...formData, [name]: value });
+    updateErrors({ ...errors, [name]: '' });
+    console.log(formData);
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
+      console.log('trying to register', formData);
       const { data } = await axios.post('/api/register', formData);
-
-      history.push('/Login'); //Change this to redirect to wherever - homepage?, success?, login?
       console.log('Registration Sucess', data);
+      Navigate('/home');
     } catch (err) {
-      console.log('ALERT, Something went wrong when submitting', err);
+      window.alert('error');
+      console.log('ALERT This is the error ', err.message);
+      // updateErrors(err.response.data.errors);
+      // window.alert('error');
     }
   }
 
@@ -38,7 +52,11 @@ export default function Register({ history }) {
           cloudName: `${process.env.cloudName}`,
           uploadPreset: `${process.env.default}`,
           cropping: true,
-          showCompletedButton: true,
+          croppingAspectRatio: 1,
+          multiple: false,
+          maxImageFileSize: 5500000,
+          gravity: 'face',
+          buttonCaption: 'Set Profile Picture',
         },
         (err, result) => {
           if (result.event !== 'success') {
@@ -93,6 +111,12 @@ export default function Register({ history }) {
                   onChange={handleChange}
                   name={'username'}
                 />
+                {
+                  //  IF errors, display error message. If none, dont display.
+                }
+                {errors.username && (
+                  <small className="has-text-danger">{errors.username}</small>
+                )}
                 <span className="icon is-left">
                   <i className="fas fa-user"></i>
                 </span>
@@ -147,6 +171,13 @@ export default function Register({ history }) {
               Submit
             </button>
           </form>
+          <br />
+          <p className="control">
+            <span>Already have an account? </span>
+            <a href="/login">
+              <span>Login</span>
+            </a>
+          </p>
         </div>
       </div>
     </>
