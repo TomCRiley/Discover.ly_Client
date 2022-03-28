@@ -44,11 +44,11 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section>
+      <section className="columns">
         {!spots ? (
           <p>Loading...</p>
         ) : (
-          spots.map((spot) => <SpotCard key={spot._id} {...spot} />)
+          spots.slice(0, 4).map((spot) => <SpotCard key={spot._id} {...spot} />)
         )}
       </section>
     </>
