@@ -1,5 +1,6 @@
 import React from 'react';
 import { getAllSpots } from '../api/spots';
+import { Link } from 'react-router-dom';
 
 function Discover() {
   const [data, setData] = React.useState(null);
@@ -24,8 +25,12 @@ function Discover() {
   return (
     <div className="container full-height-content">
       {data.map((spot, index) => (
-        <div key={spot._id} className="columns">
-          {index % 2 !== 0 ? (
+        <Link
+          to={`/spots/${spot._id}`}
+          key={spot._id}
+          className="columns notification"
+        >
+          {index % 2 === 0 ? (
             <>
               <div className="column is-half">
                 <figure className="image">
@@ -72,7 +77,7 @@ function Discover() {
               </div>
             </>
           )}
-        </div>
+        </Link>
       ))}
     </div>
   );
