@@ -1,42 +1,58 @@
 import React from 'react';
 import LogoColouredSmall from '../assets/logos/logo-coloured.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [openBurger, setOpenBurger] = React.useState(false);
+
+  const toggleBurgerMenu = () => {
+    setOpenBurger(!openBurger);
+  };
+
   return (
-    <nav className="navbar is-transparent">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="/">
-          <img
-            src={LogoColouredSmall}
-            alt="Small Discover.ly Logo"
-            width="30"
-            height="100"
-          />
-        </a>
-        <div
-          className="navbar-burger"
-          data-target="navbarExampleTransparentExample"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+    <nav
+      className='navbar is-transparent'
+      role='navigation'
+      aria-label='main navigation'
+    >
+      <div className='navbar-brand'>
+        <div>
+          <a className='navbar-item' href='/'>
+            <img
+              src={LogoColouredSmall}
+              alt='Small Discover.ly Logo'
+              width='30'
+              height='100'
+            />
+          </a>
         </div>
+        <a
+          role='button'
+          className='navbar-burger'
+          aria-label='menu'
+          aria-expanded='false'
+          data-target='navbarBasicExample'
+          href='#'
+          onClick={toggleBurgerMenu}
+        >
+          <span aria-hidden='true'></span>
+          <span aria-hidden='true'></span>
+          <span aria-hidden='true'></span>
+        </a>
       </div>
-
-      <div className="navbar-menu">
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="field is-grouped">
-              <p className="control">
-                <a className="navbar-item" href="/aboutus">
+      <div className={openBurger ? 'navbar-menu is-active' : 'navbar-menu'}>
+        <div className='navbar-end'>
+          <div className='navbar-item'>
+            <div className='field is-grouped'>
+              <p className='control'>
+                <Link className=' navbar-item' to='/aboutus'>
                   <span>About Us</span>
-                </a>
+                </Link>
               </p>
-
-              <p className="control">
-                <a className="button is-success is-outlined " href="/login">
-                  <span>Log In</span>
-                </a>
+              <p className='control'>
+                <Link className='button is-success is-outlined' to='/login'>
+                  Log In
+                </Link>
               </p>
             </div>
           </div>

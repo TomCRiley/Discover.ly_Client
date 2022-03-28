@@ -19,9 +19,10 @@ function AutoSuggest() {
   });
 
   const map = React.useRef();
-  let markers = [];
+  let markers = []; //pin-drop for map
 
   const init = () => {
+    //initialise map
     map.current = L.map('map', { zoomControl: false }).setView(
       [51.520847, -0.195521],
       16
@@ -36,6 +37,7 @@ function AutoSuggest() {
   };
 
   const handleSuggestion = (e) => {
+    //suggestion from what3words api
     console.log(e);
     console.log(window.what3words);
     what3words.api
