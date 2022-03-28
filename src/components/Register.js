@@ -38,7 +38,7 @@ export default function Register() {
       Navigate('/home');
     } catch (err) {
       window.alert('error');
-      console.log('ALERT This is the error ', err.message);
+      console.log('ALERT This is the error ', err.response.data.message);
       // updateErrors(err.response.data.errors);
       // window.alert('error');
     }
