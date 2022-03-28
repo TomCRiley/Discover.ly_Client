@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import 'bulma';
 import presetDefault from '../assets/images/profileDefault.jpg';
 
 export default function Register({ history }) {
-  const [imageDisplay, updateImageDisplay] = useState([presetDefault]);
+  const [imageDisplay, updateImageDisplay] = useState(presetDefault);
   const [formData, updateFormData] = useState({
     username: '',
     profileImage: '',
@@ -18,26 +18,11 @@ export default function Register({ history }) {
     updateFormData({ ...formData, [name]: value });
   }
 
-  // Function to get Image
-  async function fetchImages() {
-    try {
-      const { data } = await axios.get('/register');
-      updateImageDisplay(data);
-    } catch (err) {
-      console.log('ALERT Cannot Fetch Images', err);
-    }
-  }
-  fetchImages();
-
-  useEffect(() => {
-    fetchImages();
-  }, []);
-
   async function handleSubmit(e) {
     e.preventDefault();
     try {
       const { data } = await axios.post('/api/register', formData);
-      fetchImages();
+
       history.push('/Login'); //Change this to redirect to wherever - homepage?, success?, login?
       console.log('Registration Sucess', data);
     } catch (err) {
@@ -63,9 +48,7 @@ export default function Register({ history }) {
             ...formData,
             profileImage: result.info.secure_url,
           });
-          updateImageDisplay({
-            ...result.info.secure_url,
-          });
+          updateImageDisplay(result.info.secure_url);
           console.log(
             'ALERT This is the uploaded picture:',
             result.info.secure_url,
