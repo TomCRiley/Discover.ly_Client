@@ -22,43 +22,30 @@ const Home = () => {
       <section class='hero is-large image'>
         <figure>
           <img src={WideRoadCycling} />
-          <div class='hero-body'>
-            <p class='title'>Large hero</p>
-            <p class='subtitle'>Large subtitle</p>
+          <div className='is-overlay column hero-body is-4 '>
+            {/* <div className='column notification is-success is-light is-4 is-offset-4-desktop is-offset-4-tablet'></div> */}
+            <span className='is-size-1 has-text-centered' id='hero-title'>
+              Discover.ly
+            </span>
+            <br />
+            <span className='is-size-5' id='hero-subtitle'>
+              Uncover the world around you with Discover.ly
+            </span>
+            <br />
+            <span
+              className='has-text-centered is-size-7-desktop'
+              id='p-about-discoverly'
+            >
+              Discover.ly is a social discovery app for those who like to get
+              lost. Stumble across an untouched beach? How about when you took
+              that left turn that you never do on your daily run. Discover the
+              world around you and upload and share new spots with people all
+              around the country.
+            </span>
           </div>
         </figure>
       </section>
-      <section className='hero is-transparent is-fullheight-with-navbar'>
-        <div className='hero-body'>
-          <div className='columns'>
-            <div className='column is-4'>
-              <figure className='image is-150x150 is-rounded'>
-                <img src={WideRoadCycling} alt='large hero logo' />
-              </figure>
-            </div>
-            <div className='column notification is-success is-light is-4 is-offset-4-desktop is-offset-4-tablet'>
-              <span className='is-size-1 has-text-centered' id='hero-title'>
-                Discover.ly
-              </span>
-              <br />
-              <span className='is-size-5' id='hero-subtitle'>
-                Uncover the world around you with Discover.ly
-              </span>
-              <span
-                className='has-text-centered is-size-7-desktop'
-                id='p-about-discoverly'
-              >
-                Discover.ly is a social discovery app for those who like to get
-                lost. Stumble across an untouched beach? How about when you took
-                that left turn that you never do on your daily run. Discover the
-                world around you and upload and share new spots with people all
-                around the country.
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="columns">
+      <section className='columns'>
         {!spots ? (
           <p>Loading...</p>
         ) : (
