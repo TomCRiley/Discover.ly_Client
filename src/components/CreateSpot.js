@@ -28,6 +28,9 @@ const CreateSpot = () => {
       console.error(err);
     }
   };
+
+  console.log('form data', formData);
+
   return (
     <section className="container full-height-content">
       <h1 className="title">Add new spot</h1>
@@ -78,7 +81,7 @@ const CreateSpot = () => {
           <label className="label">Select an activity</label>
           <div className="control">
             <div className="select">
-              <select name="" id="">
+              <select name="activity" onChange={handleChange}>
                 <option value="">Select an activity</option>
                 <option value="Running">Running</option>
                 <option value="Walking">Walking</option>
@@ -97,6 +100,7 @@ const CreateSpot = () => {
             name="img"
             type="text"
             placeholder="Upload an image"
+            onChange={handleChange}
           />
         </div>
 
