@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LogoColouredSmall from '../assets/logos/logo-coloured.png';
 import { getLoggedInUserId } from '../lib/auth.js';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -32,6 +33,12 @@ const Navbar = () => {
 
       <div className="navbar-menu">
         <div className="navbar-end">
+          {getLoggedInUserId() && (
+            <Link to={'/add'} className="navbar-item">
+              Add New Spot
+            </Link>
+          )}
+
           <div className="navbar-item">
             <div className="field is-grouped">
               <p className="control">
