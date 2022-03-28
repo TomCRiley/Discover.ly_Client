@@ -15,15 +15,11 @@ const App = () => (
   <BrowserRouter>
     <Navbar />
     <Routes>
-
       <Route path='/' element={<Home />} />
+      <Route path='/w3w' element={<AutoSuggest />} />
       <Route path='/register' element={<Register />} />
       <Route path='/spots/:id' element={<ShowSpot />} />
-      <Route path='/w3w' element={<AutoSuggest />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/spots/:id" element={<ShowSpot />} />
-      <Route path="/login" element={<Login />} />
+      <Route path='/login' element={<Login />} />
     </Routes>
     <Footer />
   </BrowserRouter>
