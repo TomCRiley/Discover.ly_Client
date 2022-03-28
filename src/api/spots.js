@@ -46,3 +46,17 @@ export const likeSpot = async (id) => {
 
   return data;
 };
+
+export const createSpot = async (newSpot) => {
+  const options = {
+    method: 'POST',
+    url: '/api/spots',
+    data: newSpot,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+  const { data } = await axios.request(options);
+
+  return data;
+};

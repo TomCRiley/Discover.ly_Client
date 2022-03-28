@@ -9,6 +9,7 @@ import Footer from './Footer';
 import AutoSuggest from './w3w';
 import Login from './Login';
 import Discover from './Discover';
+import CreateSpot from './CreateSpot';
 
 import '../styles/style.scss';
 
@@ -22,6 +23,7 @@ const App = () => (
       <Route path="/spots/:id" element={<ShowSpot />} />
       <Route path="/login" element={<Login />} />
       <Route path="/discover" element={<Discover />} />
+      <Route path="/add" element={<CreateSpot />} />
     </Routes>
     <Footer />
   </BrowserRouter>
