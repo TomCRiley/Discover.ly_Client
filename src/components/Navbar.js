@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import LogoColouredSmall from '../assets/logos/logo-coloured.png';
+import { getLoggedInUserId } from '../lib/auth.js';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const logOut = () => {
+    sessionStorage.removeItem('token');
+    navigate('/');
+  };
   return (
     <nav className="navbar is-transparent">
       <div className="navbar-brand">
@@ -32,11 +39,19 @@ const Navbar = () => {
                   <span>About Us</span>
                 </a>
               </p>
-
               <p className="control">
-                <a className="button is-success is-outlined " href="/login">
-                  <span>Log In</span>
-                </a>
+                {getLoggedInUserId() ? (
+                  <button
+                    className="button is-success is-outlined"
+                    onClick={logOut}
+                  >
+                    Log Out
+                  </button>
+                ) : (
+                  <a className="button is-success is-outlined " href="/login">
+                    <span>Log In</span>
+                  </a>
+                )}
               </p>
             </div>
           </div>
