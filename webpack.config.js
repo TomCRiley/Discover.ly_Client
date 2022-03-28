@@ -11,7 +11,7 @@ module.exports = (webpackEnv) => {
   const publicPath =
     webpackEnv.NODE_ENV === 'local'
       ? {
-          publicPath: '/'
+          publicPath: '/',
         }
       : {};
   return {
@@ -19,7 +19,7 @@ module.exports = (webpackEnv) => {
     output: {
       filename: 'bundle.js',
       path: path.resolve('./build'),
-      ...publicPath
+      ...publicPath,
     },
     module: {
       rules: [
@@ -27,10 +27,10 @@ module.exports = (webpackEnv) => {
         { test: /\.css$/, use: ['style-loader', 'css-loader'] },
         {
           test: /\.s(a|c)ss$/,
-          use: ['style-loader', 'css-loader', 'sass-loader']
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         },
-        { test: /\.(png|jpe?g|gif)$/i, use: 'file-loader' }
-      ]
+        { test: /\.(png|jpe?g|gif)$/i, use: 'file-loader' },
+      ],
     },
     devServer: {
       // publicPath: '/',
@@ -46,9 +46,9 @@ module.exports = (webpackEnv) => {
           // Our express server. It's not running on https, so it'll be http!
           target: 'http://localhost:8000',
           // This is for development purposes only, so we aren't too worried about securing our proxy!
-          secure: false
-        }
-      }
+          secure: false,
+        },
+      },
     },
     plugins: [
       new Dotenv(),
@@ -56,9 +56,9 @@ module.exports = (webpackEnv) => {
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         filename: 'index.html',
-        inject: 'body'
+        inject: 'body',
       }),
-      env
-    ]
+      env,
+    ],
   };
 };
