@@ -152,7 +152,6 @@ export default function Register() {
                   onChange={handleChange}
                   name={'email'}
                 />
-
                 <span className="icon is-left">
                   <i className="fas fa-envelope"></i>
                 </span>
