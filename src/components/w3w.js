@@ -36,8 +36,39 @@ function AutoSuggest() {
     new L.Control.Zoom({ position: 'bottomright' }).addTo(map.current);
   };
 
+  const updateMap = (lat, lng) => {
+    // Clear out the old markers.
+    markers.forEach(function (marker) {
+      marker.remove();
+    });
+    markers = [];
+
+    let marker = L.marker([lat, lng], { icon: w3wIcon }).addTo(map.current);
+
+    // Create a marker for the location
+    markers.push(marker);
+
+    // Center the map on that location, and zoom in on it to display the grid
+    map.current.setView([lat, lng], 18);
+  };
+
+  const handleGps = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      console.log('Latitude is :', position.coords.latitude);
+      console.log('Longitude is :', position.coords.longitude);
+      updateMap(position.coords.latitude, position.coords.longitude);
+      // if ('geolocation' in navigator) {
+      //   console.log('Available');
+      // } else {
+      //   console.log('Not Available');
+      // }
+    });
+  };
+
   const handleSuggestion = (e) => {
-    //suggestion from what3words api
+    //add button which handles click and calls for long and via device
+    //refactor to call autoSuggest once it has received long and lat
+    //refactor to accept long and lat
     console.log(e);
     console.log(window.what3words);
     what3words.api
@@ -45,25 +76,7 @@ function AutoSuggest() {
       .then(function (response) {
         console.log('[convertToCoordinates]', response);
         if (response.coordinates) {
-          // Clear out the old markers.
-          markers.forEach(function (marker) {
-            marker.remove();
-          });
-          markers = [];
-
-          let marker = L.marker(
-            [response.coordinates.lat, response.coordinates.lng],
-            { icon: w3wIcon }
-          ).addTo(map.current);
-
-          // Create a marker for the location
-          markers.push(marker);
-
-          // Center the map on that location, and zoom in on it to display the grid
-          map.current.setView(
-            [response.coordinates.lat, response.coordinates.lng],
-            18
-          );
+          updateMap(response.coordinates.lat, response.coordinates.lng);
         }
       });
   };
@@ -73,6 +86,8 @@ function AutoSuggest() {
   return (
     <>
       <label htmlFor='w3w-auto'>Your What 3 Words address:</label>
+      <br />
+      <button onClick={handleGps}>Press me for coordinates!</button>
       <What3wordsAutosuggest
         id='autosuggest'
         api_key='ZZLCNFPV'

@@ -19,29 +19,31 @@ const Home = () => {
   //state for updating the cards that show example discoveries?
   return (
     <>
-      <section class='hero is-large image'>
+      <section className='hero is-large image'>
         <figure>
           <img src={WideRoadCycling} />
-          <div className='is-overlay column hero-body is-4 '>
+          <div className='is-overlay column hero-body is-4'>
             {/* <div className='column notification is-success is-light is-4 is-offset-4-desktop is-offset-4-tablet'></div> */}
-            <span className='is-size-1 has-text-centered' id='hero-title'>
-              Discover.ly
-            </span>
-            <br />
-            <span className='is-size-5' id='hero-subtitle'>
-              Uncover the world around you with Discover.ly
-            </span>
-            <br />
-            <span
-              className='has-text-centered is-size-7-desktop'
-              id='p-about-discoverly'
-            >
-              Discover.ly is a social discovery app for those who like to get
-              lost. Stumble across an untouched beach? How about when you took
-              that left turn that you never do on your daily run. Discover the
-              world around you and upload and share new spots with people all
-              around the country.
-            </span>
+            <div id='dialogue-box'>
+              <span className='is-size-1 has-text-centered' id='hero-title'>
+                Discover.ly
+              </span>
+              <br />
+              <span className='is-size-5' id='hero-subtitle'>
+                Uncover the world around you with Discover.ly
+              </span>
+              <br />
+              <span
+                className='has-text-centered is-size-7-desktop'
+                id='p-about-discoverly'
+              >
+                Discover.ly is a social discovery app for those who like to get
+                lost. Stumble across an untouched beach? How about when you took
+                that left turn that you never do on your daily run. Discover the
+                world around you and upload and share new spots with people all
+                around the country.
+              </span>
+            </div>
           </div>
         </figure>
       </section>
