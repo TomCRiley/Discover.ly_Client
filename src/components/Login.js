@@ -20,7 +20,10 @@ const Login = () => {
     try {
       await login(formData);
       console.log('Logged in');
-      navigate('/');
+      setTimeout(() => {
+        console.log('Timeout');
+        // navigate('/');
+      }, 5000);
     } catch (err) {
       console.error(err);
     }
