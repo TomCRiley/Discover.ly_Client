@@ -28,6 +28,8 @@ export default function Register() {
     password: '',
   });
 
+  const [buildUserAnimation, updateBuildUserAnimation] = React.useState('');
+
   const [errorMessage, updateErrorMessage] = useState('');
 
   function handleChange(e) {
@@ -45,6 +47,17 @@ export default function Register() {
       const { data } = await axios.post('/api/register', formData);
       console.log('ALERT This is error after post attempt:', data.message);
       updateErrorMessage(data.message);
+      if (data.message === 'success')
+        setTimeout(() => {
+          console.log('Timeout');
+          navigate('/');
+        }, 2000);
+
+      updateBuildUserAnimation(
+        <div className="pageloader is-active ">
+          <span className="title">Building your account </span>
+        </div>
+      );
     } catch (err) {
       console.log(
         'ALERT This is an error after failing to post ',
@@ -53,8 +66,6 @@ export default function Register() {
     }
     console.log('THIS IS LOGIN DATA', loginData);
     await login(loginData);
-
-    navigate('/');
   }
 
   // This uploads all information to Cloudinary
@@ -93,9 +104,6 @@ export default function Register() {
 
   return (
     <>
-      <div className="pageloader ">
-        <span className="title">Building your account </span>
-      </div>
       <div className="container full-height-content">
         <h1 className="title">Sign-Up</h1>
         <label className="label">Profile Picture</label>
@@ -209,6 +217,7 @@ export default function Register() {
               <span>Login</span>
             </a>
           </p>
+          {buildUserAnimation}
         </div>
       </div>
     </>
