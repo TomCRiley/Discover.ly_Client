@@ -13,8 +13,8 @@ export const getAllSpots = async () => {
 
 export const getFilteredSpots = async (filter) => {
   const options = {
-    method: 'GET',
-    url: 'http://localhost:8000/api/search',
+    method: 'POST',
+    url: '/api/search',
     data: filter,
   };
   const { data } = await axios.request(options);

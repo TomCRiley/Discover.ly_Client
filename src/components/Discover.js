@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Discover() {
   const [data, setData] = React.useState(null);
   const [filter, setFilter] = React.useState({
-    text: '',
+    text: '#4',
   });
 
   const handleChange = (e) => {
