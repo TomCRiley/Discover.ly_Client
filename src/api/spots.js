@@ -41,7 +41,6 @@ export const likeSpot = async (id) => {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
     },
   };
-
   const { data } = await axios.request(options);
 
   return data;
@@ -52,6 +51,20 @@ export const createSpot = async (newSpot) => {
     method: 'POST',
     url: '/api/spots',
     data: newSpot,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+  const { data } = await axios.request(options);
+
+  return data;
+};
+
+export const createComment = async (id, comment) => {
+  const options = {
+    method: 'POST',
+    url: `/api/spots/${id}/comments`,
+    data: comment,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
     },

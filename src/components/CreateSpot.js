@@ -21,9 +21,9 @@ const CreateSpot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await createSpot(formData);
+      const data = await createSpot(formData);
       console.log('Spot added', data);
-      // navigate(`/spots/${data._id}`);
+      navigate(`/spots/${data._id}`);
     } catch (err) {
       console.error(err);
     }
@@ -53,13 +53,15 @@ const CreateSpot = () => {
           <label className="label">Description</label>
           <div className="control">
             <textarea
-              className="input"
+              className="textarea"
               name="description"
               type="textarea"
+              rows="5"
+              required
               placeholder="Description"
               onChange={handleChange}
               value={formData.description}
-            />
+            ></textarea>
           </div>
         </div>
 
@@ -104,7 +106,7 @@ const CreateSpot = () => {
           />
         </div>
 
-        <button className="button" type="submit">
+        <button className="button is-success" type="submit">
           Submit
         </button>
       </form>
