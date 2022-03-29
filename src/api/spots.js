@@ -11,6 +11,17 @@ export const getAllSpots = async () => {
   return data;
 };
 
+export const getFilteredSpots = async (filter) => {
+  const options = {
+    method: 'GET',
+    url: 'http://localhost:8000/api/search',
+    data: filter,
+  };
+  const { data } = await axios.request(options);
+
+  return data;
+};
+
 export const getSpotById = async (id) => {
   const options = {
     method: 'GET',
