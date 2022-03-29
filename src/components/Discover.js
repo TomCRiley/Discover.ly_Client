@@ -1,26 +1,25 @@
 import React from 'react';
-import { getAllSpots, getFilteredSpots } from '../api/spots';
+import { getFilteredSpots } from '../api/spots';
 import { Link } from 'react-router-dom';
 
 function Discover() {
   const [data, setData] = React.useState(null);
   const [filter, setFilter] = React.useState({
-    text: '#4',
+    text: '',
   });
 
   const handleChange = (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
   };
-  console.log('filter', filter);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    getData();
   };
 
   const getData = async () => {
     try {
       const results = await getFilteredSpots(filter);
-      console.log(results);
       setData(results);
     } catch (err) {
       console.error(err);
