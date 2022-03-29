@@ -1,6 +1,8 @@
 @import '~bulma/bulma.sass';
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 //font-family: 'Permanent Marker', cursive;
+@import 'bulma';
+@import '~bulma-pageloader';
 
 .hero-image {
   padding-left: 250px;
