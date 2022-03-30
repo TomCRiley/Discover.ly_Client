@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="footer level px-6 mt-6">
       <div className="level-left">
-        <p className="level-item footer-title is-size-4">DISCOVER.LY</p>
+        <p className="level-item styled-title is-size-4">DISCOVER.LY</p>
       </div>
       <div className="level-right">
         <div className="level-item">
