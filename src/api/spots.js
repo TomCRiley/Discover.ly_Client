@@ -22,6 +22,7 @@ export const getSpotById = async (id) => {
   return data;
 };
 
+//move to user.js file in api folder
 export const getUserById = async (userId) => {
   const options = {
     method: 'GET',
