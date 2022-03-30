@@ -142,18 +142,18 @@ function Map({ lat, lng }) {
   return (
     <>
       <button
-        id='w3wbutton'
-        className='button is-info is-light'
+        id="w3wbutton"
+        className="button is-info is-light"
         onClick={handleGps}
-        type='button'
+        type="button"
       >
         Locate me
       </button>
-      <div className='map-container'>
+      <div className="map-container">
         <MapContainer key={position[0]} center={position} zoom={13}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <Marker position={position}>
             <Popup>

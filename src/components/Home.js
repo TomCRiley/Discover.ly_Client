@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { getAllSpots } from '../api/spots';
 import SpotCard from './SpotCard';
 
@@ -14,10 +15,9 @@ const Home = () => {
     getData();
   }, []);
 
-  //state for updating the cards that show example discoveries?
   return (
     <>
-      <section id="hero-image" className="hero is-large hero-background">
+      <section className="hero is-large hero-background">
         <div className="hero-body">
           <div className="container">
             <h1 className="styled-title title has-text-white is-size-1">
@@ -30,12 +30,14 @@ const Home = () => {
               world around you and upload and share new spots with people all
               around the country.
             </p>
-            <button className="button is-success is-light">Sign up</button>
+            <Link className="button is-success is-light" to="/register">
+              <span>Sign up</span>
+            </Link>
             <p className="control has-text-white">
               <span>Already have an account? </span>
-              <a href="/login">
+              <Link to="/login">
                 <span className="has-text-success">Log in</span>
-              </a>
+              </Link>
             </p>
           </div>
         </div>
@@ -53,12 +55,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <img src={LogoColoured} alt='large hero logo' />
-          <h1 class='title'>Large section</h1>
-          <h2 class='subtitle'>
-            A simple container to divide your page into
-            <strong>sections</strong>, like the one you're currently reading.
-          </h2> */
-}
