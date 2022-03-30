@@ -25,15 +25,16 @@ const SpotCard = ({ _id, title, location, img, activity, createdBy }) => {
     case 'Cycling':
       icon = 'fa-person-biking';
       break;
-    case 'Swimming':
-      icon = 'fa-person-swimming';
-      break;
     case 'Watersports':
       icon = 'fa-water';
+      break;
+    case 'Swimming':
+      icon = 'fa-person-swimming';
       break;
     default:
       icon = 'fa-shoe-prints';
   }
+
   return (
     <div className="column is-one-quarter-desktop is-half-tablet is-one-mobile">
       <Link to={`/spots/${_id}`}>
@@ -49,6 +50,7 @@ const SpotCard = ({ _id, title, location, img, activity, createdBy }) => {
             </div>
           </div>
           <div className="card-content">
+            <p className="">{activity}</p>
             <div className="title is-4">{title}</div>
             {user ? (
               <p className="subtitle is-6">{`@${user.username}`}</p>

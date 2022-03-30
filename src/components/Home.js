@@ -1,7 +1,5 @@
 import React from 'react';
 import { getAllSpots } from '../api/spots';
-import LogoColoured from '../assets/logos/logo-coloured.png';
-import WideRoadCycling from '../assets/images/wide-road-cycling.png';
 import SpotCard from './SpotCard';
 
 const Home = () => {
@@ -19,35 +17,31 @@ const Home = () => {
   //state for updating the cards that show example discoveries?
   return (
     <>
-      <section className='hero is-large image'>
-        <figure>
-          <img src={WideRoadCycling} />
-          <div className='is-overlay column hero-body is-4'>
-            {/* <div className='column notification is-success is-light is-4 is-offset-4-desktop is-offset-4-tablet'></div> */}
-            <div id='dialogue-box'>
-              <span className='is-size-1 has-text-centered' id='hero-title'>
-                Discover.ly
-              </span>
-              <br />
-              <span className='is-size-5' id='hero-subtitle'>
-                Uncover the world around you with Discover.ly
-              </span>
-              <br />
-              <span
-                className='has-text-centered is-size-7-desktop'
-                id='p-about-discoverly'
-              >
-                Discover.ly is a social discovery app for those who like to get
-                lost. Stumble across an untouched beach? How about when you took
-                that left turn that you never do on your daily run. Discover the
-                world around you and upload and share new spots with people all
-                around the country.
-              </span>
-            </div>
+      <section id="hero-image" className="hero is-large">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="styled-title title has-text-white is-size-1">
+              Discover.ly
+            </h1>
+            <p className="subtitle has-text-white">
+              Discover.ly is a social discovery app for those who like to get
+              lost. Stumble across an untouched beach? How about when you took
+              that left turn that you never do on your daily run. Discover the
+              world around you and upload and share new spots with people all
+              around the country.
+            </p>
+            <button className="button is-success is-light">Sign up</button>
+            <p className="control has-text-white">
+              <span>Already have an account? </span>
+              <a href="/login">
+                <span className="has-text-success">Log in</span>
+              </a>
+            </p>
           </div>
-        </figure>
+        </div>
       </section>
-      <section className='columns'>
+
+      <section className="columns mt-6">
         {!spots ? (
           <p>Loading...</p>
         ) : (
