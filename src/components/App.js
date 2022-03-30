@@ -11,6 +11,7 @@ import Login from './Login';
 import Discover from './Discover';
 import CreateSpot from './CreateSpot';
 import UserProfile from './UserProfile';
+import AboutUs from './AboutUs';
 
 import '../styles/style.scss';
 
@@ -26,6 +27,7 @@ const App = () => (
       <Route path='/discover' element={<Discover />} />
       <Route path='/add' element={<CreateSpot />} />
       <Route path='/profile' element={<UserProfile />} />
+      <Route path='/aboutus' element={<AboutUs />} />
     </Routes>
     <Footer />
   </BrowserRouter>

@@ -3,12 +3,7 @@
 //font-family: 'Permanent Marker', cursive;
 @import 'bulma';
 @import '~bulma-pageloader';
-
-// .hero-image {
-//   // padding-left: 250px;
-//   // height: 500px;
-//   // width: 800px;
-// }
+@import '~bulma-timeline';
 
 #hero-title {
   // display: flex;
@@ -62,6 +57,11 @@
 // page content fills 100vh minus the footer and navbar
 .full-height-content {
   min-height: calc(100vh - 180px - 44px);
+}
+
+.timeline-images {
+  margin-top: 20px;
+  border-radius: 15px;
 }
 
 .rate {
