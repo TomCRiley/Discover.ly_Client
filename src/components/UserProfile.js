@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileDefault from '../assets/images/profileDefault.jpg';
-import { getAllSpots, getUserById } from '../api/spots';
+import { getAllSpotsForUser, getUserById } from '../api/spots';
 import { getLoggedInUserId } from '../lib/auth';
 import SpotCard from './SpotCard';
 
@@ -11,7 +11,7 @@ const UserProfile = () => {
   React.useEffect(() => {
     const getData = async () => {
       const user = await getUserById(getLoggedInUserId());
-      const spots = await getAllSpots();
+      const spots = await getAllSpotsForUser(user._id);
       setUser(user);
       setSpots(spots);
     };
