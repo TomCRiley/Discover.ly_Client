@@ -1,15 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createSpot } from '../api/spots.js';
+import presetDefault from '../assets/logos/logo-coloured.png';
 
 const CreateSpot = () => {
   const navigate = useNavigate();
+  const [imageDisplay, updateImageDisplay] = React.useState(presetDefault);
   const [formData, setFormData] = React.useState({
     title: '',
     description: '',
     location: '',
     activity: '',
-    img: '',
+    img: `${presetDefault}`,
   });
 
   const handleChange = (e) => {
@@ -30,6 +32,39 @@ const CreateSpot = () => {
   };
 
   console.log('form data', formData);
+
+  // This uploads all information to Cloudinary
+  function handleUpload(e) {
+    e.preventDefault();
+    window.cloudinary
+      .createUploadWidget(
+        {
+          cloudName: `${process.env.cloudName}`,
+          uploadPreset: `${process.env.defaultSpot}`,
+          cropping: true,
+          croppingAspectRatio: 2,
+          multiple: false,
+          maxImageFileSize: 5500000,
+        },
+        (err, result) => {
+          if (result.event !== 'success') {
+            return;
+          }
+          setFormData({
+            ...formData,
+            img: result.info.secure_url,
+          });
+          updateImageDisplay(result.info.secure_url);
+          console.log(
+            'ALERT This is the uploaded picture:',
+            result.info.secure_url,
+            formData,
+            imageDisplay
+          );
+        }
+      )
+      .open();
+  }
 
   return (
     <section className="container full-height-content">
@@ -96,14 +131,23 @@ const CreateSpot = () => {
         </div>
 
         <div className="field">
-          <label className="label">Upload an image</label>
-          <input
-            className="input"
-            name="img"
-            type="text"
-            placeholder="Upload an image"
-            onChange={handleChange}
-          />
+          <label className="label">Add an image</label>
+          <div className="container">
+            <div className="columns">
+              <div className="column is-half">
+                <div className="widget">
+                  <button className="button" onClick={handleUpload}>
+                    Upload
+                  </button>
+                </div>
+                <div className="column is-half">
+                  <figure className="image is-3by3 ">
+                    <img className="image is-4by4" src={imageDisplay} />
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <button className="button is-success" type="submit">

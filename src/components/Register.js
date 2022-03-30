@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
-import presetDefault from '../assets/images/profileDefault.jpg';
 import { login } from '../api/auth.js';
 import { useNavigate } from 'react-router-dom';
+import presetDefault from '../assets/images/profileDefault.jpg';
 
 export default function Register() {
   const navigate = useNavigate();
   const [imageDisplay, updateImageDisplay] = useState(presetDefault);
+  const [buildUserAnimation, updateBuildUserAnimation] = React.useState('');
+  const [errorMessage, updateErrorMessage] = useState('');
+
   const [formData, updateFormData] = useState({
     username: '',
-    profileImage: '',
+    profileImage: `${presetDefault}`,
     email: '',
     password: '',
     passwordConfirmation: '',
@@ -28,10 +30,6 @@ export default function Register() {
     password: '',
   });
 
-  const [buildUserAnimation, updateBuildUserAnimation] = React.useState('');
-
-  const [errorMessage, updateErrorMessage] = useState('');
-
   function handleChange(e) {
     const { name, value } = e.target;
     updateFormData({ ...formData, [name]: value });
@@ -40,31 +38,27 @@ export default function Register() {
     console.log(formData);
   }
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e, next) {
     e.preventDefault();
     try {
-      console.log(formData.username.toLowerCase());
       const { data } = await axios.post('/api/register', formData);
-      console.log('ALERT This is error after post attempt:', data.message);
       updateErrorMessage(data.message);
-      if (data.message === 'success')
+      if (data.message === 'success') {
+        updateBuildUserAnimation(
+          <div className="pageloader is-active ">
+            <span className="title">
+              Hey {formData.username}! <br />
+              Creating your profile
+            </span>
+          </div>
+        );
         setTimeout(() => {
-          console.log('Timeout');
           navigate('/');
-        }, 2000);
-
-      updateBuildUserAnimation(
-        <div className="pageloader is-active ">
-          <span className="title">Building your account </span>
-        </div>
-      );
+        }, 5000);
+      }
     } catch (err) {
-      console.log(
-        'ALERT This is an error after failing to post ',
-        err.response.data.message
-      );
+      next();
     }
-    console.log('THIS IS LOGIN DATA', loginData);
     await login(loginData);
   }
 
@@ -80,7 +74,8 @@ export default function Register() {
           multiple: false,
           maxImageFileSize: 5500000,
           gravity: 'face',
-          buttonCaption: 'Set Profile Picture',
+          croppingShowBackButton: false,
+          showPoweredBy: false,
         },
         (err, result) => {
           if (result.event !== 'success') {
@@ -106,13 +101,13 @@ export default function Register() {
     <>
       <div className="container full-height-content">
         <h1 className="title">Sign-Up</h1>
-        <label className="label">Profile Picture</label>
+        <label className="label">Add a profile picture</label>
         <div className="container">
           <div className="columns">
             <div className="column is-half">
               <div className="widget">
                 <button className="button" onClick={handleUpload}>
-                  Click to upload a Profile Picture
+                  Upload
                 </button>
               </div>
               <div className="column is-half">
