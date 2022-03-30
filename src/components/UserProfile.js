@@ -10,41 +10,42 @@ const UserProfile = () => {
   //get user spots not all spots
   React.useEffect(() => {
     const getData = async () => {
-      const spots = await getAllSpots();
       const user = await getUserById(getLoggedInUserId());
+      const spots = await getAllSpots();
       setUser(user);
       setSpots(spots);
     };
 
     getData();
   }, []);
+
   return (
-    <section class='hero '>
-      <div class='hero-body'>
-        <div class='container'>
-          <div class='columns'>
-            <div class='column is-8 is-offset-2'>
-              <figure class='image is-128x128'>
+    <section className="hero ">
+      <div className="hero-body">
+        <div className="container">
+          <div className="columns">
+            <div className="column is-8 is-offset-2">
+              <figure className="image is-128x128">
                 <img
-                  class='is-rounded'
+                  className="is-rounded"
                   src={user.profileImage}
-                  alt='profile pic'
+                  alt="profile pic"
                 />
               </figure>
             </div>
           </div>
 
-          <section class='section'>
-            <div class='columns'>
-              <div class='column is-8 is-offset-2'>
-                <div class='content is-medium'>
-                  <h2 class='subtitle is-5'>Hi, friend!</h2>
-                  <p class='is-7'>
+          <section className="section">
+            <div className="columns">
+              <div className="column is-8 is-offset-2">
+                <div className="content is-medium">
+                  <h2 className="subtitle is-5">Hi, friend!</h2>
+                  <p className="is-7">
                     When you're logged in, you get access to all the spots you
                     discovered. Feel free to add a bio about yourself so other
                     users can learn more about you. This is your page!{' '}
                   </p>
-                  <h1 class='title'>{user.username}</h1>
+                  <h1 className="title">{user.username}</h1>
                   <p>
                     USER BIO Lorem ipsum, dolor sit amet consectetur adipisicing
                     elit. Adipisci temporibus quidem architecto voluptatibus
@@ -60,9 +61,9 @@ const UserProfile = () => {
             </div>
           </section>
 
-          <div class='is-divider'></div>
+          <div className="is-divider"></div>
 
-          <section className='columns'>
+          <section className="columns">
             {!spots ? (
               <p>Loading...</p>
             ) : (
