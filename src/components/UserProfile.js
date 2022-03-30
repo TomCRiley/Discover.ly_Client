@@ -46,14 +46,12 @@ const UserProfile = () => {
                   </p>
                   <h1 class='title'>{user.username}</h1>
                   <p>
-                    USER BIO Lorem ipsum, dolor sit amet consectetur adipisicing
-                    elit. Adipisci temporibus quidem architecto voluptatibus
-                    neque modi quo obcaecati numquam dolorum assumenda vero
-                    minima consequuntur soluta sunt quae ratione, consequatur
-                    vel eius. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolore sunt porro labore nemo adipisci vitae ea ullam
-                    veniam ad sapiente facere commodi fugiat, corrupti iusto
-                    quas expedita nesciunt reiciendis necessitatibus.
+                    USER BIO - during register users selected preferences /
+                    consequatur vel eius. Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Dolore sunt porro labore nemo adipisci
+                    vitae ea ullam veniam ad sapiente facere commodi fugiat,
+                    corrupti iusto quas expedita nesciunt reiciendis
+                    necessitatibus.
                   </p>
                 </div>
               </div>
@@ -62,14 +60,13 @@ const UserProfile = () => {
 
           <div class='is-divider'></div>
 
-          <section className='columns'>
-            {!spots ? (
-              <p>Loading...</p>
-            ) : (
-              spots
-                .slice(0, 4)
-                .map((spot) => <SpotCard key={spot._id} {...spot} />)
-            )}
+          <section className='section'>
+            <h2 className='subtitle is-5'>The Spots you like</h2>
+            <div className='tile is notification'>{user.likedSpots}</div>
+          </section>
+          <section className='section'>
+            <h2 className='subtitle is-5'>Your Discover.ly's</h2>
+            <div className='tile is notification'>{user.likedSpots}</div>
           </section>
         </div>
       </div>

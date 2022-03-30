@@ -3,6 +3,7 @@
 //font-family: 'Permanent Marker', cursive;
 @import 'bulma';
 @import '~bulma-pageloader';
+@import '~bulma-timeline';
 
 .styled-title {
   font-family: 'Permanent Marker', cursive;
@@ -41,6 +42,11 @@
 // page content fills 100vh minus the footer and navbar
 .full-height-content {
   min-height: calc(100vh - 180px - 44px);
+}
+
+.timeline-images {
+  margin-top: 20px;
+  border-radius: 15px;
 }
 
 .rate {
