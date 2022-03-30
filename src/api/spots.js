@@ -11,6 +11,17 @@ export const getAllSpots = async () => {
   return data;
 };
 
+export const getAllSpotsForUser = async (userId) => {
+  const options = {
+    method: 'GET',
+    url: `/api/spots/users/${userId}`,
+  };
+
+  const { data } = await axios.request(options);
+
+  return data;
+};
+
 export const getFilteredSpots = async (filter) => {
   const options = {
     method: 'GET',

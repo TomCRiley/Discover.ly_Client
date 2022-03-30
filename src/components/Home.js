@@ -17,7 +17,7 @@ const Home = () => {
   //state for updating the cards that show example discoveries?
   return (
     <>
-      <section id="hero-image" className="hero is-large">
+      <section id="hero-image" className="hero is-large hero-background">
         <div className="hero-body">
           <div className="container">
             <h1 className="styled-title title has-text-white is-size-1">
