@@ -15,5 +15,5 @@ export const login = async (credentials) => {
     window.sessionStorage.removeItem('token');
   }
 
-  return data.message;
+  return data;
 };
