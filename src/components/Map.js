@@ -1,20 +1,23 @@
-import React from 'react';
-import { useState } from 'react';
-import { What3wordsAutosuggest } from '@what3words/react-components';
-import Image from '../assets/logos/logo-coloured.png';
+import React, { useState } from 'react';
+// import { What3wordsAutosuggest } from '@what3words/react-components';
+import MapPin from '../assets/logos/logo-coloured.png';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import 'leaflet-defaulticon-compatibility';
+// import { Draggable } from 'leaflet';
 
-function AutoSuggest() {
-  const [value, setValue] = useState('');
-  const onChange = (e) => setValue(e.target.value);
+function Map({ lat, lng, onChange }) {
+  const [coordinates, setCoordinates] = useState({
+    lat: lat ?? 51.520847,
+    lng: lng ?? -0.195521, //null coalescing (??) - if long is null, it'll use provided coordantes.
+  });
+  // const onChange = (e) => setValue(e.target.value);
   const w3wIcon = L.icon({
     // iconUrl: 'https://map.what3words.com/map/marker.png',
-    iconUrl: Image,
-    iconSize: [64, 64], // size of the icon
+    iconUrl: MapPin,
+    iconSize: [34, 34], // size of the icon
     iconAnchor: [25, 59], // point of the icon which will correspond to marker's location
   });
 
@@ -24,7 +27,8 @@ function AutoSuggest() {
   const init = () => {
     //initialise map
     map.current = L.map('map', { zoomControl: false }).setView(
-      [51.520847, -0.195521],
+      // [51.520847, -0.195521],
+      [coordinates.lat, coordinates.lng],
       16
     );
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -43,14 +47,25 @@ function AutoSuggest() {
     });
     markers = [];
 
-    let marker = L.marker([lat, lng], { icon: w3wIcon }).addTo(map.current);
+    let marker = L.marker(
+      [lat, lng],
+      { icon: w3wIcon },
+      { draggable: 'true' }
+    ).addTo(map.current);
 
     // Create a marker for the location
     markers.push(marker);
 
     // Center the map on that location, and zoom in on it to display the grid
     map.current.setView([lat, lng], 18);
+    setCoordinates({ lat, lng });
   };
+
+  React.useEffect(() => {
+    if (onChange) {
+      onChange({ ...coordinates });
+    }
+  }, [coordinates]);
 
   const handleGps = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -65,30 +80,31 @@ function AutoSuggest() {
     });
   };
 
-  const handleSuggestion = (e) => {
-    //add button which handles click and calls for long and via device
-    //refactor to call autoSuggest once it has received long and lat
-    //refactor to accept long and lat
-    console.log(e);
-    console.log(window.what3words);
-    what3words.api
-      .convertToCoordinates(e.detail.suggestion.words)
-      .then(function (response) {
-        console.log('[convertToCoordinates]', response);
-        if (response.coordinates) {
-          updateMap(response.coordinates.lat, response.coordinates.lng);
-        }
-      });
-  };
+  // const handleSuggestion = (e) => {
+  //   console.log(e);
+  //   console.log(window.what3words);
+  //   what3words.api
+  //     .convertToCoordinates(e.detail.suggestion.words)
+  //     .then(function (response) {
+  //       console.log('[convertToCoordinates]', response);
+  //       if (response.coordinates) {
+  //         updateMap(response.coordinates.lat, response.coordinates.lng);
+  //       }
+  //     });
+  // };
 
   document.addEventListener('DOMContentLoaded', init);
 
   return (
     <>
-      <label htmlFor='w3w-auto'>Your What 3 Words address:</label>
-      <br />
-      <button onClick={handleGps}>Press me for coordinates!</button>
-      <What3wordsAutosuggest
+      <button
+        id='w3wbutton'
+        className='button is-info is-light'
+        onClick={handleGps}
+      >
+        Locate me
+      </button>
+      {/* <What3wordsAutosuggest
         id='autosuggest'
         api_key='ZZLCNFPV'
         clip_to_country='GB'
@@ -97,10 +113,10 @@ function AutoSuggest() {
         return_coordinates='true'
       >
         <input id='w3w-auto' type='text' value={value} onChange={onChange} />
-      </What3wordsAutosuggest>
+      </What3wordsAutosuggest> */}
       <div id='map' style={{ height: '500px', width: '500px' }}></div>
     </>
   );
 }
 
-export default AutoSuggest;
+export default Map;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createSpot } from '../api/spots.js';
 import presetDefault from '../assets/logos/logo-coloured.png';
+import Map from './Map.js';
 
 const CreateSpot = () => {
   const navigate = useNavigate();
@@ -12,6 +13,8 @@ const CreateSpot = () => {
     location: '',
     activity: '',
     img: `${presetDefault}`,
+    lat: '',
+    lng: '',
   });
 
   const handleChange = (e) => {
@@ -29,6 +32,10 @@ const CreateSpot = () => {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleMapChange = (coordinates) => {
+    setFormData({ ...formData, lat: coordinates.lat, lng: coordinates.lng });
   };
 
   console.log('form data', formData);
@@ -112,6 +119,9 @@ const CreateSpot = () => {
               value={formData.location}
             />
           </div>
+        </div>
+        <div className="container">
+          <Map className="tile" onChange={handleMapChange} />
         </div>
 
         <div className="field">

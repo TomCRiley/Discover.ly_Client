@@ -1,26 +1,25 @@
 import React from 'react';
-import { getAllSpots, getFilteredSpots } from '../api/spots';
+import { getFilteredSpots } from '../api/spots';
 import { Link } from 'react-router-dom';
 
 function Discover() {
   const [data, setData] = React.useState(null);
   const [filter, setFilter] = React.useState({
-    text: '#4',
+    text: '',
   });
 
   const handleChange = (e) => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
   };
-  console.log('filter', filter);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    getData();
   };
 
   const getData = async () => {
     try {
       const results = await getFilteredSpots(filter);
-      console.log(results);
       setData(results);
     } catch (err) {
       console.error(err);
@@ -62,51 +61,55 @@ function Discover() {
         </button>
       </form>
       <div className="container full-height-content">
-        {data.map((spot, index) => (
-          <Link to={`/spots/${spot._id}`} key={spot._id} className="columns">
-            {index % 2 === 0 ? (
-              <>
-                <div className="column is-half">
-                  <figure className="image">
-                    <img src={spot.img} alt={spot.title} />
-                  </figure>
-                </div>
-                <div className="column is-half">
-                  <div className="title">{spot.title}</div>
-                  <div className="subtitle">{spot.location}</div>
-                  <div>{spot.description}</div>
+        {data.length === 0 ? (
+          <p>No results</p>
+        ) : (
+          data.map((spot, index) => (
+            <Link to={`/spots/${spot._id}`} key={spot._id} className="columns">
+              {index % 2 === 0 ? (
+                <>
+                  <div className="column is-half">
+                    <figure className="image">
+                      <img src={spot.img} alt={spot.title} />
+                    </figure>
+                  </div>
+                  <div className="column is-half">
+                    <div className="title">{spot.title}</div>
+                    <div className="subtitle">{spot.location}</div>
+                    <div>{spot.description}</div>
 
-                  <button className="button is-success is-inverted">
-                    <span className="icon">
-                      <i className="fas fa-heart"></i>
-                    </span>
-                    <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
-                  </button>
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="column is-half">
-                  <div className="title">{spot.title}</div>
-                  <div className="subtitle">{spot.location}</div>
-                  <div>{spot.description}</div>
+                    <button className="button is-success is-inverted">
+                      <span className="icon">
+                        <i className="fas fa-heart"></i>
+                      </span>
+                      <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="column is-half">
+                    <div className="title">{spot.title}</div>
+                    <div className="subtitle">{spot.location}</div>
+                    <div>{spot.description}</div>
 
-                  <button className="button is-success is-inverted">
-                    <span className="icon">
-                      <i className="fas fa-heart"></i>
-                    </span>
-                    <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
-                  </button>
-                </div>
-                <div className="column is-half">
-                  <figure className="image">
-                    <img src={spot.img} alt={spot.title} />
-                  </figure>
-                </div>
-              </>
-            )}
-          </Link>
-        ))}
+                    <button className="button is-success is-inverted">
+                      <span className="icon">
+                        <i className="fas fa-heart"></i>
+                      </span>
+                      <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
+                    </button>
+                  </div>
+                  <div className="column is-half">
+                    <figure className="image">
+                      <img src={spot.img} alt={spot.title} />
+                    </figure>
+                  </div>
+                </>
+              )}
+            </Link>
+          ))
+        )}
       </div>
     </>
   );

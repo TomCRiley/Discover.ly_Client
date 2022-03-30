@@ -13,9 +13,8 @@ export const getAllSpots = async () => {
 
 export const getFilteredSpots = async (filter) => {
   const options = {
-    method: 'POST',
-    url: '/api/search',
-    data: filter,
+    method: 'GET',
+    url: `/api/search?text=${filter.text}`,
   };
   const { data } = await axios.request(options);
 
@@ -33,6 +32,7 @@ export const getSpotById = async (id) => {
   return data;
 };
 
+//move to user.js file in api folder
 export const getUserById = async (userId) => {
   const options = {
     method: 'GET',
