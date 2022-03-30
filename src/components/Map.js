@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { What3wordsAutosuggest } from '@what3words/react-components';
 import MapPin from '../assets/logos/logo-coloured.png';
 
 import L from 'leaflet';
@@ -13,9 +12,8 @@ function Map({ lat, lng, onChange }) {
     lat: lat ?? 51.520847,
     lng: lng ?? -0.195521, //null coalescing (??) - if long is null, it'll use provided coordantes.
   });
-  // const onChange = (e) => setValue(e.target.value);
+
   const w3wIcon = L.icon({
-    // iconUrl: 'https://map.what3words.com/map/marker.png',
     iconUrl: MapPin,
     iconSize: [34, 34], // size of the icon
     iconAnchor: [25, 59], // point of the icon which will correspond to marker's location
@@ -80,21 +78,6 @@ function Map({ lat, lng, onChange }) {
     });
   };
 
-  // const handleSuggestion = (e) => {
-  //   console.log(e);
-  //   console.log(window.what3words);
-  //   what3words.api
-  //     .convertToCoordinates(e.detail.suggestion.words)
-  //     .then(function (response) {
-  //       console.log('[convertToCoordinates]', response);
-  //       if (response.coordinates) {
-  //         updateMap(response.coordinates.lat, response.coordinates.lng);
-  //       }
-  //     });
-  // };
-
-  document.addEventListener('DOMContentLoaded', init);
-
   return (
     <>
       <button
@@ -104,17 +87,10 @@ function Map({ lat, lng, onChange }) {
       >
         Locate me
       </button>
-      {/* <What3wordsAutosuggest
-        id='autosuggest'
-        api_key='ZZLCNFPV'
-        clip_to_country='GB'
-        autosuggest_focus='51.1,2.0'
-        onSelected_suggestion={handleSuggestion}
-        return_coordinates='true'
-      >
-        <input id='w3w-auto' type='text' value={value} onChange={onChange} />
-      </What3wordsAutosuggest> */}
-      <div id='map' style={{ height: '500px', width: '500px' }}></div>
+      <div
+        id='map'
+        style={{ height: '500px', width: '500px', borderRadius: '15px' }}
+      ></div>
     </>
   );
 }
