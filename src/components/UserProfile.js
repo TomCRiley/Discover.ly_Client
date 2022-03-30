@@ -47,14 +47,12 @@ const UserProfile = () => {
                   </p>
                   <h1 className="title">{user.username}</h1>
                   <p>
-                    USER BIO Lorem ipsum, dolor sit amet consectetur adipisicing
-                    elit. Adipisci temporibus quidem architecto voluptatibus
-                    neque modi quo obcaecati numquam dolorum assumenda vero
-                    minima consequuntur soluta sunt quae ratione, consequatur
-                    vel eius. Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Dolore sunt porro labore nemo adipisci vitae ea ullam
-                    veniam ad sapiente facere commodi fugiat, corrupti iusto
-                    quas expedita nesciunt reiciendis necessitatibus.
+                    USER BIO - during register users selected preferences /
+                    consequatur vel eius. Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Dolore sunt porro labore nemo adipisci
+                    vitae ea ullam veniam ad sapiente facere commodi fugiat,
+                    corrupti iusto quas expedita nesciunt reiciendis
+                    necessitatibus.
                   </p>
                 </div>
               </div>
@@ -71,6 +69,7 @@ const UserProfile = () => {
                 .slice(0, 4)
                 .map((spot) => <SpotCard key={spot._id} {...spot} />)
             )}
+
           </section>
         </div>
       </div>
