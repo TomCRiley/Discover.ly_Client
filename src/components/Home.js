@@ -52,6 +52,12 @@ const Home = () => {
           spots.slice(0, 3).map((spot) => <SpotCard key={spot._id} {...spot} />)
         )}
       </section>
+
+      <div className="has-text-centered mb-5">
+        <Link to="/discover" className="button is-warning p-5">
+          Discover more
+        </Link>
+      </div>
     </>
   );
 };

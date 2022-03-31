@@ -36,29 +36,33 @@ function Discover() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label htmlFor="search" className="label">
-            Search
-          </label>
-          <div className="control has-icons-left">
-            <input
-              type="text"
-              className="input"
-              placeholder="Enter search word"
-              name="text"
-              onChange={handleChange}
-              value={filter.text}
-            />
-            <span className="icon is-left">
-              <i className="fas fa-search"></i>
-            </span>
+      <div className="is-flex is-justify-content-center py-6">
+        <form onSubmit={handleSubmit}>
+          <div className="field has-addons">
+            <label htmlFor="search" className="label">
+              <div className="control has-icons-left">
+                <input
+                  type="text"
+                  className="input"
+                  placeholder="Enter search word"
+                  name="text"
+                  onChange={handleChange}
+                  value={filter.text}
+                />
+                <span className="icon is-left">
+                  <i className="fas fa-search"></i>
+                </span>
+              </div>
+            </label>
+            <div className="control">
+              <button type="submit" className="button is-warning">
+                Update results
+              </button>
+            </div>
           </div>
-        </div>
-        <button type="submit" className="button is-success">
-          Update results
-        </button>
-      </form>
+        </form>
+      </div>
+
       <div className="container full-height-content">
         {data.length === 0 ? (
           <p>No results</p>
@@ -77,7 +81,7 @@ function Discover() {
                     <div className="subtitle">{spot.location}</div>
                     <div>{spot.description}</div>
 
-                    <button className="button is-success is-inverted">
+                    <button className="button is-warning is-inverted">
                       <span className="icon">
                         <i className="fas fa-heart"></i>
                       </span>
@@ -92,7 +96,7 @@ function Discover() {
                     <div className="subtitle">{spot.location}</div>
                     <div>{spot.description}</div>
 
-                    <button className="button is-success is-inverted">
+                    <button className="button is-warning is-inverted">
                       <span className="icon">
                         <i className="fas fa-heart"></i>
                       </span>

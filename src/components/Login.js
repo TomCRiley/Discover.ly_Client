@@ -101,7 +101,7 @@ const Login = () => {
           </div>
 
           <div className="field">
-            <button type="submit" className="button is-success">
+            <button type="submit" className="button is-warning">
               Log in
             </button>
             <small className="has-text-danger"> {errorMessage}</small>
