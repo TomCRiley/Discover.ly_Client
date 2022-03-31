@@ -50,6 +50,8 @@ const ShowSpot = () => {
     return <p>Loading...</p>;
   }
 
+  console.log('rating', commentValue.rating);
+
   let icon;
   switch (spot.activity) {
     case 'Running':
@@ -80,8 +82,8 @@ const ShowSpot = () => {
               <figure className="image">
                 <img src={spot.img} alt={spot.title} />
               </figure>
-              <div className='activity-icon-large'>
-                <span className='icon has-text-white'>
+              <div className="activity-icon-large">
+                <span className="icon has-text-white">
                   <i className={`fas ${icon} fa-2xl`}></i>
                 </span>
               </div>
@@ -105,9 +107,9 @@ const ShowSpot = () => {
         </div>
       </section>
       <section>
-        <div className='container'>
+        <div className="container">
           <Map
-            className='tile'
+            className="tile"
             // onChange={handleMapChange}
             editable={false}
             lat={spot.lat}

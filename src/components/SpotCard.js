@@ -35,29 +35,31 @@ const SpotCard = ({ _id, title, location, img, activity, createdBy }) => {
       icon = 'fa-shoe-prints';
   }
 
+  if (!_id) {
+    return <p>No spots...</p>;
+  }
+
   return (
-
-    <div className="column is-one-third-desktop is-half-tablet is-one-mobile">
-
+    <div className="column">
       <Link to={`/spots/${_id}`}>
-        <div className='card'>
-          <div className='card-image'>
+        <div className="card">
+          <div className="card-image">
             <figure>
               <img src={img} alt={title} />
             </figure>
-            <div className='activity-icon'>
-              <span className='icon has-text-white'>
+            <div className="activity-icon">
+              <span className="icon has-text-white">
                 <i className={`fas ${icon}`}></i>
               </span>
             </div>
           </div>
-          <div className='card-content'>
-            <div className='title is-4'>{title}</div>
+          <div className="card-content">
+            <div className="title is-4">{title}</div>
             {user ? (
-              <p className='subtitle is-6'>{`@${user.username}`}</p>
+              <p className="subtitle is-6">{`@${user.username}`}</p>
             ) : null}
 
-            <p className='subtitle is-6'>{location}</p>
+            <p className="subtitle is-6">{location}</p>
           </div>
         </div>
       </Link>

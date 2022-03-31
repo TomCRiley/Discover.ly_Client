@@ -1,3 +1,7 @@
+$forestgreen: hsla(121, 41%, 34%, 0.263);
+$seagreen: hsla(121, 41%, 34%, 0.263);
+$info: $forestgreen;
+
 @import '~bulma/bulma.sass';
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 //font-family: 'Permanent Marker', cursive;
@@ -8,6 +12,12 @@
 
 .styled-title {
   font-family: 'Permanent Marker', cursive;
+}
+
+.about-us {
+  color: #ea4aaa;
+  background-color: #fdedf6;
+  border: 1px solid #ea4aaa;
 }
 
 .hero-background {
@@ -22,17 +32,18 @@
   background-repeat: no-repeat;
 }
 
-// #p-about-discoverly {
-//   // display: flex;
-//   // justify-content: center;
-// }
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 
+  .cardzz {
+    display: inline-block;
+  }
+}
 .is-parent:hover {
   transform: translate3D(-6px, -4px, 0) scale(1);
 }
-// #mapcontainer {
-//   border-radius: 10px;
-// }
 
 .pageloader {
   opacity: 0.8;
@@ -68,7 +79,8 @@
 }
 .rate:not(:checked) > input {
   position: absolute;
-  top: -9999px;
+  // top: -9999px;
+  clip: rect(0, 0, 0, 0);
 }
 .rate:not(:checked) > label {
   float: right;
