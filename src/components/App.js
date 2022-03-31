@@ -14,6 +14,7 @@ import UserProfile from './UserProfile';
 import AboutUs from './AboutUs';
 
 import '../styles/style.scss';
+import MapExperi from './MapExperi';
 
 const App = () => (
   <BrowserRouter>
@@ -28,6 +29,7 @@ const App = () => (
       <Route path="/add" element={<CreateSpot />} />
       <Route path="/profile" element={<UserProfile />} />
       <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/mapexperi" element={<MapExperi />} />
     </Routes>
     <Footer />
   </BrowserRouter>
