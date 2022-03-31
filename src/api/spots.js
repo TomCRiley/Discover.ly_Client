@@ -22,6 +22,17 @@ export const getAllSpotsForUser = async (userId) => {
   return data;
 };
 
+export const getLikedSpotsForUser = async (userId) => {
+  const options = {
+    method: 'GET',
+    url: `/api/spots/likes/users/${userId}`,
+  };
+
+  const { data } = await axios.request(options);
+
+  return data;
+};
+
 export const getFilteredSpots = async (filter) => {
   const options = {
     method: 'GET',

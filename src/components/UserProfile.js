@@ -1,19 +1,35 @@
 import React from 'react';
 import ProfileDefault from '../assets/images/profileDefault.jpg';
-import { getAllSpotsForUser, getUserById } from '../api/spots';
+import {
+  getAllSpotsForUser,
+  getUserById,
+  getLikedSpotsForUser,
+} from '../api/spots';
 import { getLoggedInUserId } from '../lib/auth';
 import SpotCard from './SpotCard';
 
 const UserProfile = () => {
-  const [spots, setSpots] = React.useState(null);
+  const [createdSpots, setCreatedSpots] = React.useState(null);
+  const [likedSpots, setLikedSpots] = React.useState(null);
   const [user, setUser] = React.useState({});
-  //get user spots not all spots
+
   React.useEffect(() => {
     const getData = async () => {
       const user = await getUserById(getLoggedInUserId());
-      const spots = await getAllSpotsForUser(user._id);
+      const createdSpots = await getAllSpotsForUser(user._id);
       setUser(user);
-      setSpots(spots);
+      setCreatedSpots(createdSpots);
+    };
+
+    getData();
+  }, []);
+
+  React.useEffect(() => {
+    const getData = async () => {
+      const user = await getUserById(getLoggedInUserId());
+      const likedSpots = await getLikedSpotsForUser(user._id);
+      setUser(user);
+      setLikedSpots(likedSpots);
     };
 
     getData();
@@ -61,15 +77,28 @@ const UserProfile = () => {
 
           <div className="is-divider"></div>
 
-          <section className="columns">
-            {!spots ? (
-              <p>Loading...</p>
-            ) : (
-              spots
-                .slice(0, 4)
-                .map((spot) => <SpotCard key={spot._id} {...spot} />)
-            )}
+          <section>
+            <h3>Your spots</h3>
+            <div className="columns">
+              {!createdSpots ? (
+                <p>Loading...</p>
+              ) : (
+                createdSpots.map((spot) => (
+                  <SpotCard key={spot._id} {...spot} />
+                ))
+              )}
+            </div>
+          </section>
 
+          <section>
+            <h3>Liked spots</h3>
+            <div className="columns">
+              {!likedSpots ? (
+                <p>Loading...</p>
+              ) : (
+                likedSpots.map((spot) => <SpotCard key={spot._id} {...spot} />)
+              )}
+            </div>
           </section>
         </div>
       </div>

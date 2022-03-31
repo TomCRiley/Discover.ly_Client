@@ -36,7 +36,7 @@ const SpotCard = ({ _id, title, location, img, activity, createdBy }) => {
   }
 
   return (
-    <div className="column is-one-quarter-desktop is-half-tablet is-one-mobile">
+    <div className="column is-one-third-desktop is-half-tablet is-one-mobile">
       <Link to={`/spots/${_id}`}>
         <div className="card">
           <div className="card-image">
