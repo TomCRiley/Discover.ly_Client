@@ -46,7 +46,9 @@ $warning: $outdoorsgreen;
 }
 
 .pageloader {
-  opacity: 0.8;
+  opacity: 0.9;
+  background-color: hsla(121, 41%, 34%,);
+  color: white;
   font-size: xx-large;
 }
 
@@ -108,3 +110,4 @@ $warning: $outdoorsgreen;
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
 }
+

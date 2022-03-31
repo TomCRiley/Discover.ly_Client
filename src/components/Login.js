@@ -28,18 +28,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await login(formData);
-      // console.log('Logged in');
-
-      // setTimeout(() => {
-      //   console.log('Timeout');
-      //   navigate('/');
-      // }, 2000);
       const data = await login(formData);
       updateErrorMessage(data.message);
       if (data.message === 'success') {
         updateBuildUserAnimation(
-          <div className="pageloader is-active ">
+          <div className="pageloader is-active">
             <span className="title">
               Welcome back {formData.email}! <br /> Getting your profile
               <br />
