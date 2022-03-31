@@ -36,6 +36,14 @@ const Footer = () => {
             </span>
           </a>
         </div>
+        <div className="level-item">
+          <a href="#top" className="level-item  is-size-6 has-text-black">
+            <span>Return to top </span>
+            <span className="icon">
+              <i className="fa fa-circle-arrow-up "></i>
+            </span>
+          </a>
+        </div>
       </div>
     </footer>
   );
