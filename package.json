@@ -31,6 +31,7 @@
     "@what3words/react-components": "^4.0.3",
     "axios": "^0.26.1",
     "bulma": "^0.9.3",
+    "bulma-o-steps": "^1.1.0",
     "bulma-pageloader": "^0.3.0",
     "bulma-timeline": "^3.0.5",
     "cloudinary": "^1.29.0",

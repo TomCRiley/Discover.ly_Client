@@ -3,6 +3,7 @@
 //font-family: 'Permanent Marker', cursive;
 @import 'bulma';
 @import '~bulma-pageloader';
+@import '~bulma-o-steps';
 @import '~bulma-timeline';
 
 .styled-title {
@@ -26,6 +27,9 @@
 //   // justify-content: center;
 // }
 
+.is-parent:hover {
+  transform: translate3D(-6px, -4px, 0) scale(1);
+}
 // #mapcontainer {
 //   border-radius: 10px;
 // }

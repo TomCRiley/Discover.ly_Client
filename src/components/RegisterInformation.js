@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import axios from 'axios';
 import { login } from '../api/auth.js';
 import { useNavigate } from 'react-router-dom';
 import presetDefault from '../assets/images/profileDefault.jpg';
+import RegisterInterests from './RegisterInterests.js';
 
 export default function Register() {
   const navigate = useNavigate();
@@ -54,7 +55,7 @@ export default function Register() {
         );
         setTimeout(() => {
           navigate('/');
-        }, 3000);
+        }, 5000);
       }
     } catch (err) {
       next();
@@ -96,20 +97,14 @@ export default function Register() {
       )
       .open();
   }
+
   return (
     <>
-      <ul className="steps is-horizontal is-medium m-3">
-        <li className="steps-segment is-dashed">
+      <ul className="steps">
+        <li className="steps-segment">
           <span className="steps-marker">
             <span className="icon">
               <i className="fa fa-heart"></i>
-            </span>
-          </span>
-        </li>
-        <li className="steps-segment is-active">
-          <span className="steps-marker">
-            <span className="icon">
-              <i className="fa fa-circle-info"></i>
             </span>
           </span>
         </li>
@@ -136,7 +131,7 @@ export default function Register() {
           <div className="columns">
             <div className="column is-half">
               <div className="widget">
-                <button className="button is-success " onClick={handleUpload}>
+                <button className="button" onClick={handleUpload}>
                   Upload
                 </button>
               </div>
@@ -146,32 +141,6 @@ export default function Register() {
                 </figure>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="tile is-ancestor">
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-person-biking"></i>
-              <p className="subtitle">Cycling</p>
-            </article>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-person-hiking"></i>
-              <p className="subtitle">Hiking</p>
-            </article>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-water"></i>
-              <p className="subtitle">Swimming</p>
-            </article>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-wine-bottle"></i>
-              <p className="subtitle">Boozing</p>
-            </article>
           </div>
         </div>
         <div className="container">
@@ -256,8 +225,7 @@ export default function Register() {
                 </span>
               </div>
             </div>
-
-            <button className="button is-success " onClick={handleSubmit}>
+            <button className="button is-success" onClick={handleSubmit}>
               Submit
             </button>
             <small className="has-text-danger"> {errorMessage}</small>

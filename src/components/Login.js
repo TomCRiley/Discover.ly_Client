@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
-
+  const [buildUserAnimation, updateBuildUserAnimation] = React.useState('');
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
@@ -28,9 +28,24 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // await login(formData);
+      // console.log('Logged in');
+
+      // setTimeout(() => {
+      //   console.log('Timeout');
+      //   navigate('/');
+      // }, 2000);
       const data = await login(formData);
       updateErrorMessage(data.message);
       if (data.message === 'success') {
+        updateBuildUserAnimation(
+          <div className="pageloader is-active ">
+            <span className="title">
+              Welcome back {formData.email}! <br /> Getting your profile
+              <br />
+            </span>
+          </div>
+        );
         setTimeout(() => {
           navigate('/profile');
         }, 3000);
@@ -98,6 +113,7 @@ const Login = () => {
           <span>Sign up</span>
         </Link>
       </p>
+      {buildUserAnimation}
     </div>
   );
 };
