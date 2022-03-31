@@ -1,4 +1,5 @@
 import React from 'react';
+import { MapContainer } from 'react-leaflet';
 import { useNavigate } from 'react-router-dom';
 import { createSpot } from '../api/spots.js';
 import presetDefault from '../assets/logos/logo-coloured.png';
@@ -120,8 +121,8 @@ const CreateSpot = () => {
             />
           </div>
         </div>
-        <div className='container'>
-          <Map className='tile' onChange={handleMapChange} />
+        <div className='container mapcontainer'>
+          <Map className='tile' onChange={handleMapChange} editable={true} />
         </div>
 
         <div className='field'>
