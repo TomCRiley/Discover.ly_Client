@@ -34,7 +34,6 @@ function Discover() {
     return <p>Loading...</p>;
   }
 
-  console.log(data);
   return (
     <>
       <form onSubmit={handleSubmit}>
