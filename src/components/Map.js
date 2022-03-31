@@ -103,7 +103,7 @@ function Map({ lat, lng, onChange, editable }) {
       )}
       <div
         id='map'
-        style={{ height: '500px', width: '500px', borderRadius: '15px' }}
+        style={{ height: '500px', marginTop: '10px', borderRadius: '15px' }}
       ></div>
     </>
   );

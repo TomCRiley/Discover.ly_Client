@@ -80,9 +80,9 @@ const ShowSpot = () => {
               <figure className='image'>
                 <img src={spot.img} alt={spot.title} />
               </figure>
-              <div className='activity-icon'>
+              <div className='activity-icon-large'>
                 <span className='icon has-text-white'>
-                  <i className={`fas ${icon}`}></i>
+                  <i className={`fas ${icon} fa-2xl`}></i>
                 </span>
               </div>
             </div>
@@ -101,16 +101,18 @@ const ShowSpot = () => {
               </span>
               <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
             </button>
-            <div className='container'>
-              <Map
-                className='tile'
-                // onChange={handleMapChange}
-                editable={false}
-                lat={spot.lat}
-                lng={spot.lng}
-              />
-            </div>
           </div>
+        </div>
+      </section>
+      <section>
+        <div className='container'>
+          <Map
+            className='tile'
+            // onChange={handleMapChange}
+            editable={false}
+            lat={spot.lat}
+            lng={spot.lng}
+          />
         </div>
       </section>
 
