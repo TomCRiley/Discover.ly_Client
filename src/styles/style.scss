@@ -1,6 +1,7 @@
 $forestgreen: hsla(121, 41%, 34%, 0.263);
-$seagreen: hsla(121, 41%, 34%, 0.263);
+$outdoorsgreen: hsla(120, 55%, 25%, 0.818);
 $info: $forestgreen;
+$warning: $outdoorsgreen;
 
 @import '~bulma/bulma.sass';
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
@@ -14,10 +15,9 @@ $info: $forestgreen;
   font-family: 'Permanent Marker', cursive;
 }
 
-.about-us {
-  color: #ea4aaa;
-  background-color: #fdedf6;
-  border: 1px solid #ea4aaa;
+.search-button {
+  border: 1px solid hsla(120, 55%, 25%, 0.818);
+  color: hsla(120, 55%, 25%, 0.818);
 }
 
 .hero-background {

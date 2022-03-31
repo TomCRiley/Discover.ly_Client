@@ -95,7 +95,7 @@ const ShowSpot = () => {
             <div>{spot.description}</div>
 
             <button
-              className="button is-success is-inverted"
+              className="button is-warning is-inverted"
               onClick={handleLike}
             >
               <span className="icon">
@@ -155,7 +155,7 @@ const ShowSpot = () => {
               </div>
             </div>
 
-            <button type="submit" className="button is-success">
+            <button type="submit" className="button is-warning">
               Post
             </button>
           </form>

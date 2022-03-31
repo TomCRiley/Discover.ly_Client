@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="navbar is-transparent"
+      className="navbar is-transparent py-4"
       role="navigation"
       aria-label="main navigation"
     >
@@ -32,6 +32,7 @@ const Navbar = () => {
               width="30"
               height="100"
             />
+            <p className="styled-title title"> Discover.ly</p>
           </a>
         </div>
         <a
@@ -59,20 +60,20 @@ const Navbar = () => {
           <div className="navbar-item">
             <div className="field is-grouped">
               <p className="control">
-                <Link className="navbar-item button about-us" to="/aboutus">
+                <Link
+                  className="navbar-item button is-warning is-inverted"
+                  to="/aboutus"
+                >
                   <span>About Us</span>
                 </Link>
               </p>
               <p className="control">
                 {getLoggedInUserId() ? (
-                  <button
-                    className="button is-success is-outlined"
-                    onClick={logOut}
-                  >
+                  <button className="button is-warning" onClick={logOut}>
                     Log Out
                   </button>
                 ) : (
-                  <Link className="button is-success is-outlined " to="/login">
+                  <Link className="button is-warning" to="/login">
                     <span>Log In</span>
                   </Link>
                 )}
