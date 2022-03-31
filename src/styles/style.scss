@@ -3,6 +3,7 @@
 //font-family: 'Permanent Marker', cursive;
 @import 'bulma';
 @import '~bulma-pageloader';
+@import '~bulma-o-steps';
 
 // .hero-image {
 //   // padding-left: 250px;
@@ -43,6 +44,10 @@
 //   // display: flex;
 //   // justify-content: center;
 // }
+
+.is-parent:hover {
+  transform: translate3D(-6px, -4px, 0) scale(1);
+}
 
 .pageloader {
   opacity: 0.8;

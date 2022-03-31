@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [buildUserAnimation, updateBuildUserAnimation] = React.useState('');
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
@@ -20,10 +21,18 @@ const Login = () => {
     try {
       await login(formData);
       console.log('Logged in');
+      updateBuildUserAnimation(
+        <div className="pageloader is-active ">
+          <span className="title">
+            Welcome back {formData.email}! <br /> Getting your profile
+            <br />
+          </span>
+        </div>
+      );
       setTimeout(() => {
         console.log('Timeout');
-        // navigate('/');
-      }, 5000);
+        navigate('/');
+      }, 2000);
     } catch (err) {
       console.error(err);
     }
@@ -80,6 +89,7 @@ const Login = () => {
           <span>Sign up</span>
         </a>
       </p>
+      {buildUserAnimation}
     </div>
   );
 };
