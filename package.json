@@ -33,6 +33,7 @@
     "bulma": "^0.9.3",
     "bulma-o-steps": "^1.1.0",
     "bulma-pageloader": "^0.3.0",
+    "bulma-timeline": "^3.0.5",
     "cloudinary": "^1.29.0",
     "dotenv": "^16.0.0",
     "leaflet": "^1.7.1",

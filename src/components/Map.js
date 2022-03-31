@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { What3wordsAutosuggest } from '@what3words/react-components';
 import MapPin from '../assets/logos/logo-coloured.png';
 
 import L from 'leaflet';
@@ -8,14 +7,13 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility';
 // import { Draggable } from 'leaflet';
 
-function Map({ lat, lng, onChange }) {
+function Map({ lat, lng, onChange, editable }) {
   const [coordinates, setCoordinates] = useState({
     lat: lat ?? 51.520847,
     lng: lng ?? -0.195521, //null coalescing (??) - if long is null, it'll use provided coordantes.
   });
   // const onChange = (e) => setValue(e.target.value);
   const w3wIcon = L.icon({
-    // iconUrl: 'https://map.what3words.com/map/marker.png',
     iconUrl: MapPin,
     iconSize: [34, 34], // size of the icon
     iconAnchor: [25, 59], // point of the icon which will correspond to marker's location
@@ -38,6 +36,9 @@ function Map({ lat, lng, onChange }) {
       maxZoom: 25,
     }).addTo(map.current);
     new L.Control.Zoom({ position: 'bottomright' }).addTo(map.current);
+    if (coordinates.lat && coordinates.lng) {
+      updateMap(coordinates.lat, coordinates.lng);
+    }
   };
 
   const updateMap = (lat, lng) => {
@@ -58,8 +59,15 @@ function Map({ lat, lng, onChange }) {
 
     // Center the map on that location, and zoom in on it to display the grid
     map.current.setView([lat, lng], 18);
-    setCoordinates({ lat, lng });
+    if (editable === true) {
+      setCoordinates({ lat, lng });
+    }
   };
+
+  //initialises map (instead of domcontent loaded)
+  React.useEffect(() => {
+    init();
+  }, []);
 
   React.useEffect(() => {
     if (onChange) {
@@ -80,43 +88,72 @@ function Map({ lat, lng, onChange }) {
     });
   };
 
-  // const handleSuggestion = (e) => {
-  //   console.log(e);
-  //   console.log(window.what3words);
-  //   what3words.api
-  //     .convertToCoordinates(e.detail.suggestion.words)
-  //     .then(function (response) {
-  //       console.log('[convertToCoordinates]', response);
-  //       if (response.coordinates) {
-  //         updateMap(response.coordinates.lat, response.coordinates.lng);
-  //       }
-  //     });
-  // };
-
-  document.addEventListener('DOMContentLoaded', init);
+  // document.addEventListener('DOMContentLoaded', init);
 
   return (
     <>
-      <button
-        id='w3wbutton'
-        className='button is-info is-light'
-        onClick={handleGps}
-      >
-        Locate me
-      </button>
-      {/* <What3wordsAutosuggest
-        id='autosuggest'
-        api_key='ZZLCNFPV'
-        clip_to_country='GB'
-        autosuggest_focus='51.1,2.0'
-        onSelected_suggestion={handleSuggestion}
-        return_coordinates='true'
-      >
-        <input id='w3w-auto' type='text' value={value} onChange={onChange} />
-      </What3wordsAutosuggest> */}
-      <div id='map' style={{ height: '500px', width: '500px' }}></div>
+      {editable === true && ( //if it is not editable (by user), then remove button,
+        <button
+          id='w3wbutton'
+          className='button is-info is-light'
+          onClick={handleGps}
+        >
+          Locate me
+        </button>
+      )}
+      <div
+        id='map'
+        style={{ height: '500px', width: '500px', borderRadius: '15px' }}
+      ></div>
     </>
   );
 }
 
 export default Map;
+
+// import React, { useState, useffect } from 'react';
+// import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+
+// import 'leaflet/dist/leaflet.css';
+// import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+// import 'leaflet-defaulticon-compatibility';
+// import 'leaflet/dist/images/marker-shadow.png';
+// import 'leaflet/dist/images/marker-icon.png';
+
+// function Map({ lat, lng }) {
+//   const [position, setPosition] = React.useState([51.505, -0.09]);
+//   const [map, setMap] = useState();
+//   const handleGps = () => {
+//     navigator.geolocation.getCurrentPosition((location) => {
+//       setPosition([location.coords.latitude, location.coords.longitude]);
+//     });
+//   };
+
+//   return (
+//     <>
+//       <button
+//         id='w3wbutton'
+//         className='button is-info is-light'
+//         onClick={handleGps}
+//         type='button'
+//       >
+//         Locate me
+//       </button>
+//       <div className='map-container'>
+//         <MapContainer key={position[0]} center={position} zoom={13}>
+//           <TileLayer
+//             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+//           />
+//           <Marker position={position}>
+//             <Popup>
+//               A pretty CSS3 popup. <br /> Easily customizable.
+//             </Popup>
+//           </Marker>
+//         </MapContainer>
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Map;

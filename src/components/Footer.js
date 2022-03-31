@@ -2,10 +2,10 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="footer level px-6 mt-6">
+    <footer className="footer level px-6">
       <div className="level-left">
         <a href="/">
-          <p className="level-item footer-title is-size-4"> DISCOVER.LY</p>
+          <p className="level-item styled-title is-size-4"> DISCOVER.LY</p>
         </a>
       </div>
       <div className="level-right">

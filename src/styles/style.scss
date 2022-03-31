@@ -4,40 +4,22 @@
 @import 'bulma';
 @import '~bulma-pageloader';
 @import '~bulma-o-steps';
+@import '~bulma-timeline';
 
-// .hero-image {
-//   // padding-left: 250px;
-//   // height: 500px;
-//   // width: 800px;
-// }
-
-#hero-title {
-  // display: flex;
-  // justify-content: center;
+.styled-title {
   font-family: 'Permanent Marker', cursive;
-  // font-size: 100px;
-  color: black;
 }
 
-#hero-subtitle {
-  // display: flex;
-  // justify-content: center;
-  color: darkgreen;
-  font-weight: 600;
-  // font-size: 30px;
-}
-
-#dialogue-box {
-  background-color: aliceblue;
-  // opacity: 40%;
-  border-radius: 5px;
-}
-
-#w3wbutton {
-  margin-bottom: 10px;
-}
-#autosuggest {
-  padding-top: 10px;
+.hero-background {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url('https://i.imgur.com/ocy6msR.jpeg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 // #p-about-discoverly {
@@ -48,6 +30,9 @@
 .is-parent:hover {
   transform: translate3D(-6px, -4px, 0) scale(1);
 }
+// #mapcontainer {
+//   border-radius: 10px;
+// }
 
 .pageloader {
   opacity: 0.8;
@@ -60,13 +45,14 @@
   right: 16px;
 }
 
-.footer-title {
-  font-family: 'Permanent Marker', cursive;
-}
-
 // page content fills 100vh minus the footer and navbar
 .full-height-content {
   min-height: calc(100vh - 180px - 44px);
+}
+
+.timeline-images {
+  margin-top: 20px;
+  border-radius: 15px;
 }
 
 .rate {
