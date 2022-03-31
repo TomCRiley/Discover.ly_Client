@@ -49,7 +49,7 @@ const Home = () => {
         {!spots ? (
           <p>Loading...</p>
         ) : (
-          spots.slice(0, 4).map((spot) => <SpotCard key={spot._id} {...spot} />)
+          spots.slice(0, 3).map((spot) => <SpotCard key={spot._id} {...spot} />)
         )}
       </section>
     </>

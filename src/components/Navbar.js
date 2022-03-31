@@ -59,7 +59,7 @@ const Navbar = () => {
           <div className="navbar-item">
             <div className="field is-grouped">
               <p className="control">
-                <Link className="navbar-item" to="/aboutus">
+                <Link className="navbar-item button about-us" to="/aboutus">
                   <span>About Us</span>
                 </Link>
               </p>

@@ -7,6 +7,7 @@ import {
 } from '../api/spots';
 import { getLoggedInUserId } from '../lib/auth';
 import SpotCard from './SpotCard';
+import { Link } from 'react-router-dom';
 
 const UserProfile = () => {
   const [createdSpots, setCreatedSpots] = React.useState(null);
@@ -35,8 +36,34 @@ const UserProfile = () => {
     getData();
   }, []);
 
+  console.log('user', user);
+  console.log('created', createdSpots);
+  console.log('liked', likedSpots);
+
+  function spotsLength(spotsArray) {
+    if (spotsArray.length === 0) {
+      return <p>No spots...</p>;
+    } else {
+      return (
+        <section className="scrolling-wrapper">
+          {spotsArray.map((spot) => (
+            <div className="cardzz is-rounded" key={spot._id}>
+              <SpotCard key={spot._id} {...spot} />
+            </div>
+          ))}
+        </section>
+
+        // <div className="columns">
+        //   {spotsArray.map((spot) => (
+        //     <SpotCard key={spot._id} {...spot} />
+        //   ))}
+        // </div>
+      );
+    }
+  }
+
   return (
-    <section className="hero ">
+    <section className="hero full-height-content">
       <div className="hero-body">
         <div className="container">
           <div className="columns">
@@ -57,11 +84,11 @@ const UserProfile = () => {
                 <div className="content is-medium">
                   <h2 className="subtitle is-5">Hi, friend!</h2>
                   <p className="is-7">
-                    When you're logged in, you get access to all the spots you
-                    discovered. Feel free to add a bio about yourself so other
-                    users can learn more about you. This is your page!{' '}
+                    When you&apos;re logged in, you get access to all the spots
+                    you discovered. Feel free to add a bio about yourself so
+                    other users can learn more about you. This is your page!{' '}
                   </p>
-                  <h1 className="title">{user.username}</h1>
+                  <h1 className="title">@{user.username}</h1>
                   <p>
                     USER BIO - during register users selected preferences /
                     consequatur vel eius. Lorem ipsum dolor sit amet consectetur
@@ -75,31 +102,25 @@ const UserProfile = () => {
             </div>
           </section>
 
-          <div className="is-divider"></div>
-
           <section>
-            <h3>Your spots</h3>
-            <div className="columns">
-              {!createdSpots ? (
-                <p>Loading...</p>
-              ) : (
-                createdSpots.map((spot) => (
-                  <SpotCard key={spot._id} {...spot} />
-                ))
-              )}
+            <h3 className="title is-5">Your spots</h3>
+            <div className="">
+              {!createdSpots ? <p>Loading...</p> : spotsLength(createdSpots)}
             </div>
           </section>
 
-          <section>
-            <h3>Liked spots</h3>
-            <div className="columns">
-              {!likedSpots ? (
-                <p>Loading...</p>
-              ) : (
-                likedSpots.map((spot) => <SpotCard key={spot._id} {...spot} />)
-              )}
+          <section className="my-6">
+            <h3 className="title is-5">Liked spots</h3>
+            <div className="">
+              {!likedSpots ? <p>Loading...</p> : spotsLength(likedSpots)}
             </div>
           </section>
+
+          <div className="has-text-centered">
+            <Link to="/discover" className="button is-success">
+              Discover more
+            </Link>
+          </div>
         </div>
       </div>
     </section>
