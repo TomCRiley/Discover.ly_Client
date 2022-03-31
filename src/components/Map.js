@@ -3,8 +3,8 @@ import MapPin from '../assets/logos/logo-coloured.png';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-import 'leaflet-defaulticon-compatibility';
+// import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+// import 'leaflet-defaulticon-compatibility';
 // import { Draggable } from 'leaflet';
 
 function Map({ lat, lng, onChange, editable }) {
@@ -94,15 +94,15 @@ function Map({ lat, lng, onChange, editable }) {
     <>
       {editable === true && ( //if it is not editable (by user), then remove button,
         <button
-          id='w3wbutton'
-          className='button is-info is-light'
+          id="w3wbutton"
+          className="button is-success is-light"
           onClick={handleGps}
         >
           Locate me
         </button>
       )}
       <div
-        id='map'
+        id="map"
         style={{ height: '500px', marginTop: '10px', borderRadius: '15px' }}
       ></div>
     </>

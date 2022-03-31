@@ -162,7 +162,7 @@ const ShowSpot = () => {
         )}
       </section>
 
-      <section className="container mt-4">
+      <section className="container my-4">
         {spot.comments.map((comment) => (
           <Comment key={comment._id} {...comment} />
         ))}

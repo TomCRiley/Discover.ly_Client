@@ -1,5 +1,5 @@
 $forestgreen: hsla(121, 41%, 34%, 0.263);
-$outdoorsgreen: hsla(120, 55%, 25%, 0.818);
+$outdoorsgreen: rgb(39, 131, 70);
 $info: $forestgreen;
 $warning: $outdoorsgreen;
 
@@ -13,11 +13,6 @@ $warning: $outdoorsgreen;
 
 .styled-title {
   font-family: 'Permanent Marker', cursive;
-}
-
-.search-button {
-  border: 1px solid hsla(120, 55%, 25%, 0.818);
-  color: hsla(120, 55%, 25%, 0.818);
 }
 
 .hero-background {
@@ -107,4 +102,9 @@ $warning: $outdoorsgreen;
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
   color: #c59b08;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
 }

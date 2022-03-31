@@ -100,7 +100,6 @@ const CreateSpot = () => {
               name="description"
               type="textarea"
               rows="5"
-              required
               placeholder="Description"
               onChange={handleChange}
               value={formData.description}
@@ -161,7 +160,7 @@ const CreateSpot = () => {
           </div>
         </div>
 
-        <button className="button is-success" type="submit">
+        <button className="button is-warning mb-4" type="submit">
           Submit
         </button>
       </form>
