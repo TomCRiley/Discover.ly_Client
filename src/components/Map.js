@@ -4,8 +4,6 @@ import MapPin from '../assets/logos/logo-coloured.png';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// import { Draggable } from 'leaflet';
-
 function Map({ lat, lng, onChange, editable }) {
   const [coordinates, setCoordinates] = useState({
     lat: lat ?? 51.520847,
@@ -91,15 +89,15 @@ function Map({ lat, lng, onChange, editable }) {
     <>
       {editable === true && ( //if it is not editable (by user), then remove button,
         <button
-          id='w3wbutton'
-          className='button is-info is-light'
+          id="w3wbutton"
+          className="button is-success is-light"
           onClick={handleGps}
         >
           Locate me
         </button>
       )}
       <div
-        id='map'
+        id="map"
         style={{ height: '500px', marginTop: '10px', borderRadius: '15px' }}
       ></div>
     </>
