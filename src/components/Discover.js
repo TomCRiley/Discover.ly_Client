@@ -79,7 +79,7 @@ function Discover() {
                   <div className="column is-half">
                     <div className="title">{spot.title}</div>
                     <div className="subtitle">{spot.location}</div>
-                    <div>{spot.description}</div>
+                    <div className="has-text-black">{spot.description}</div>
 
                     <button className="button is-warning is-inverted">
                       <span className="icon">
@@ -94,7 +94,7 @@ function Discover() {
                   <div className="column is-half">
                     <div className="title">{spot.title}</div>
                     <div className="subtitle">{spot.location}</div>
-                    <div>{spot.description}</div>
+                    <div className="has-text-black">{spot.description}</div>
 
                     <button className="button is-warning is-inverted">
                       <span className="icon">

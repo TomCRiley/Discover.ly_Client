@@ -57,28 +57,31 @@ const Navbar = () => {
               Add New Spot
             </Link>
           )}
+
+          <Link className="navbar-item" to="/aboutus">
+            <span>About Us</span>
+          </Link>
+
+          {getLoggedInUserId() && (
+            <Link to={'/profile'} className="navbar-item">
+              <span className="icon button is-warning is-inverted">
+                <i className="fas fa-user fa-xl"></i>
+              </span>
+            </Link>
+          )}
+
           <div className="navbar-item">
-            <div className="field is-grouped">
-              <p className="control">
-                <Link
-                  className="navbar-item button is-warning is-inverted"
-                  to="/aboutus"
-                >
-                  <span>About Us</span>
+            <p className="control">
+              {getLoggedInUserId() ? (
+                <button className="button is-warning" onClick={logOut}>
+                  Log Out
+                </button>
+              ) : (
+                <Link className="button is-warning" to="/login">
+                  <span>Log In</span>
                 </Link>
-              </p>
-              <p className="control">
-                {getLoggedInUserId() ? (
-                  <button className="button is-warning" onClick={logOut}>
-                    Log Out
-                  </button>
-                ) : (
-                  <Link className="button is-warning" to="/login">
-                    <span>Log In</span>
-                  </Link>
-                )}
-              </p>
-            </div>
+              )}
+            </p>
           </div>
         </div>
       </div>

@@ -117,7 +117,7 @@ const UserProfile = () => {
           </section>
 
           <div className="has-text-centered">
-            <Link to="/discover" className="button is-success">
+            <Link to="/discover" className="button is-warning">
               Discover more
             </Link>
           </div>
