@@ -3,9 +3,6 @@ import MapPin from '../assets/logos/logo-coloured.png';
 
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-// import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-// import 'leaflet-defaulticon-compatibility';
-// import { Draggable } from 'leaflet';
 
 function Map({ lat, lng, onChange, editable }) {
   const [coordinates, setCoordinates] = useState({
@@ -87,8 +84,6 @@ function Map({ lat, lng, onChange, editable }) {
       // }
     });
   };
-
-  // document.addEventListener('DOMContentLoaded', init);
 
   return (
     <>

@@ -36,26 +36,26 @@ function Discover() {
 
   return (
     <>
-      <div className="is-flex is-justify-content-center py-6">
+      <div className='is-flex is-justify-content-center py-6'>
         <form onSubmit={handleSubmit}>
-          <div className="field has-addons">
-            <label htmlFor="search" className="label">
-              <div className="control has-icons-left">
+          <div className='field has-addons'>
+            <label htmlFor='search' className='label'>
+              <div className='control has-icons-left is-rounded'>
                 <input
-                  type="text"
-                  className="input"
-                  placeholder="Enter search word"
-                  name="text"
+                  type='text'
+                  className='input'
+                  placeholder='Enter search word'
+                  name='text'
                   onChange={handleChange}
                   value={filter.text}
                 />
-                <span className="icon is-left">
-                  <i className="fas fa-search"></i>
+                <span className='icon is-left'>
+                  <i className='fas fa-search'></i>
                 </span>
               </div>
             </label>
-            <div className="control">
-              <button type="submit" className="button is-warning">
+            <div className='control'>
+              <button type='submit' className='button is-warning'>
                 Update results
               </button>
             </div>
@@ -63,16 +63,16 @@ function Discover() {
         </form>
       </div>
 
-      <div className="container full-height-content">
+      <div className='container full-height-content'>
         {data.length === 0 ? (
           <p>No results</p>
         ) : (
           data.map((spot, index) => (
-            <Link to={`/spots/${spot._id}`} key={spot._id} className="columns">
+            <Link to={`/spots/${spot._id}`} key={spot._id} className='columns'>
               {index % 2 === 0 ? (
                 <>
-                  <div className="column is-half">
-                    <figure className="image">
+                  <div className='column is-half'>
+                    <figure className='image'>
                       <img src={spot.img} alt={spot.title} />
                     </figure>
                   </div>
@@ -81,9 +81,9 @@ function Discover() {
                     <div className="subtitle">{spot.location}</div>
                     <div className="has-text-black">{spot.description}</div>
 
-                    <button className="button is-warning is-inverted">
-                      <span className="icon">
-                        <i className="fas fa-heart"></i>
+                    <button className='button is-warning is-inverted'>
+                      <span className='icon'>
+                        <i className='fas fa-heart'></i>
                       </span>
                       <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
                     </button>
@@ -91,20 +91,24 @@ function Discover() {
                 </>
               ) : (
                 <>
+                  <div className='column is-half'>
+                    <div className='title'>{spot.title}</div>
+                    <div className='subtitle'>{spot.location}</div>
+                    <div>{spot.description}</div>
                   <div className="column is-half">
                     <div className="title">{spot.title}</div>
                     <div className="subtitle">{spot.location}</div>
                     <div className="has-text-black">{spot.description}</div>
 
-                    <button className="button is-warning is-inverted">
-                      <span className="icon">
-                        <i className="fas fa-heart"></i>
+                    <button className='button is-warning is-inverted'>
+                      <span className='icon'>
+                        <i className='fas fa-heart'></i>
                       </span>
                       <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
                     </button>
                   </div>
-                  <div className="column is-half">
-                    <figure className="image">
+                  <div className='column is-half'>
+                    <figure className='image'>
                       <img src={spot.img} alt={spot.title} />
                     </figure>
                   </div>
