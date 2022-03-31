@@ -59,7 +59,7 @@ const Navbar = () => {
           <div className="navbar-item">
             <div className="field is-grouped">
               <p className="control">
-                <Link className=" navbar-item" to="/aboutus">
+                <Link className="navbar-item" to="/aboutus">
                   <span>About Us</span>
                 </Link>
               </p>
@@ -72,9 +72,9 @@ const Navbar = () => {
                     Log Out
                   </button>
                 ) : (
-                  <a className="button is-success is-outlined " href="/login">
+                  <Link className="button is-success is-outlined " to="/login">
                     <span>Log In</span>
-                  </a>
+                  </Link>
                 )}
               </p>
             </div>

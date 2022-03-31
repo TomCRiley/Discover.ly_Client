@@ -1,29 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { login } from '../api/auth.js';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
+
   const [formData, setFormData] = React.useState({
     email: '',
     password: '',
+  });
+
+  const [errorMessage, updateErrorMessage] = React.useState('');
+
+  const [required, updateRequired] = React.useState({
+    email: '*',
+    password: '*',
   });
 
   const handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    updateRequired({ ...required, [name]: '' });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(formData);
-      console.log('Logged in');
-      setTimeout(() => {
-        console.log('Timeout');
-        // navigate('/');
-      }, 5000);
+      const data = await login(formData);
+      updateErrorMessage(data.message);
+      if (data.message === 'success') {
+        setTimeout(() => {
+          navigate('/profile');
+        }, 3000);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -34,7 +45,10 @@ const Login = () => {
       <h1 className="title">Log in</h1>
       <form onSubmit={handleSubmit}>
         <div className="field">
-          <label className="label">Email or Username</label>
+          <label className="label">
+            Email or Username{' '}
+            <small className="has-text-danger">{required.email}</small>
+          </label>
           <div className="control has-icons-left">
             <input
               type="text"
@@ -51,7 +65,10 @@ const Login = () => {
         </div>
 
         <div className="field">
-          <label className="label">Password</label>
+          <label className="label">
+            Password{' '}
+            <small className="has-text-danger">{required.password}</small>
+          </label>
           <div className="control has-icons-left">
             <input
               type="password"
@@ -71,14 +88,15 @@ const Login = () => {
           <button type="submit" className="button is-success">
             Log in
           </button>
+          <small className="has-text-danger"> {errorMessage}</small>
         </div>
       </form>
       <br />
       <p className="control">
         <span>Don&apos;t have an account yet? </span>
-        <a href="/register">
+        <Link to="/register">
           <span>Sign up</span>
-        </a>
+        </Link>
       </p>
     </div>
   );
