@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactTextTransition, { presets } from 'react-text-transition';
 import { getAllSpots } from '../api/spots';
 import SpotCard from './SpotCard';
 
@@ -11,9 +12,17 @@ const Home = () => {
       const spots = await getAllSpots();
       setSpots(spots);
     };
-
+    for (let i = 0; i < 5; i++) {
+      setTimeout(function () {
+        updateText(texts[i]);
+        console.log(i);
+      }, 2000 * i);
+    }
     getData();
   }, []);
+
+  const texts = ['lakes', 'mountains', 'rivers', 'ly'];
+  const [setText, updateText] = React.useState('');
 
   return (
     <>
@@ -22,7 +31,17 @@ const Home = () => {
           <div className="container columns">
             <div className="column is-two-thirds">
               <h1 className="styled-title title has-text-white is-size-1">
-                Discover.ly
+                <section className="inline">
+                  Discover.
+                  <ReactTextTransition
+                    text={setText}
+                    springConfig={presets.gentle}
+                    style={{
+                      margin: '0 0px',
+                    }}
+                    inline
+                  />
+                </section>
               </h1>
               <p className="subtitle has-text-white">
                 Discover.ly is a social discovery app for those who like to get
@@ -31,6 +50,7 @@ const Home = () => {
                 world around you and upload and share new spots with people all
                 around the country.
               </p>
+
               <Link className="button is-success is-light" to="/register">
                 <span>Sign up</span>
               </Link>
