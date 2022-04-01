@@ -75,78 +75,78 @@ const CreateSpot = () => {
   }
 
   return (
-    <section className="container full-height-content">
-      <h1 className="title">Add new spot</h1>
+    <section className='container full-height-content'>
+      <h1 className='title'>Add new spot</h1>
       <form onSubmit={handleSubmit}>
-        <div className="field">
-          <label className="label">Title</label>
-          <div className="control">
+        <div className='field'>
+          <label className='label'>Title</label>
+          <div className='control'>
             <input
-              type="text"
-              className="input"
-              placeholder="Title"
-              name="title"
+              type='text'
+              className='input'
+              placeholder='Title'
+              name='title'
               onChange={handleChange}
               value={formData.title}
             />
           </div>
         </div>
 
-        <div className="field">
-          <label className="label">Description</label>
-          <div className="control">
+        <div className='field'>
+          <label className='label'>Description</label>
+          <div className='control'>
             <textarea
-              className="textarea"
-              name="description"
-              type="textarea"
-              rows="5"
-              placeholder="Description"
+              className='textarea'
+              name='description'
+              type='textarea'
+              rows='5'
+              placeholder='Description'
               onChange={handleChange}
               value={formData.description}
             ></textarea>
           </div>
         </div>
 
-        <div className="field">
-          <label className="label">Location</label>
-          <div className="control">
+        <div className='field'>
+          <label className='label'>Location</label>
+          <div className='control'>
             <input
-              className="input"
-              name="location"
-              type="text"
-              placeholder="Location"
+              className='input'
+              name='location'
+              type='text'
+              placeholder='Location'
               onChange={handleChange}
               value={formData.location}
             />
           </div>
         </div>
-        <div className="container mapcontainer">
-          <Map className="tile" onChange={handleMapChange} editable={true} />
+        <div className='container mapcontainer'>
+          <Map className='tile' onChange={handleMapChange} editable={true} />
         </div>
 
-        <div className="field">
-          <label className="label">Select an activity</label>
-          <div className="control">
-            <div className="select">
-              <select name="activity" onChange={handleChange}>
-                <option value="">Select an activity</option>
-                <option value="Running">Running</option>
-                <option value="Walking">Walking</option>
-                <option value="Cycling">Cycling</option>
-                <option value="Swimming">Swimming</option>
-                <option value="Watersports">Watersports</option>
+        <div className='field'>
+          <label className='label'>Select an activity</label>
+          <div className='control'>
+            <div className='select'>
+              <select name='activity' onChange={handleChange}>
+                <option value=''>Select an activity</option>
+                <option value='Running'>Running</option>
+                <option value='Walking'>Walking</option>
+                <option value='Cycling'>Cycling</option>
+                <option value='Swimming'>Swimming</option>
+                <option value='Watersports'>Watersports</option>
               </select>
             </div>
           </div>
         </div>
 
-        <div className="field">
-          <label className="label">Add an image</label>
-          <div className="container">
-            <div className="columns">
-              <div className="column is-half">
-                <div className="widget">
-                  <button className="button" onClick={handleUpload}>
+        <div className='field'>
+          <label className='label'>Add an image</label>
+          <div className='container'>
+            <div className='columns'>
+              <div className='column is-half'>
+                <div className='widget'>
+                  <button className='button' onClick={handleUpload}>
                     Upload
                   </button>
                 </div>
@@ -160,7 +160,7 @@ const CreateSpot = () => {
           </div>
         </div>
 
-        <button className="button is-warning mb-4" type="submit">
+        <button className='button is-warning mb-4' type='submit'>
           Submit
         </button>
       </form>

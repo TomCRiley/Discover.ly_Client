@@ -73,7 +73,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="columns mt-6">
+      <section className="columns is-centered mt-6">
         {!spots ? (
           <p>Loading...</p>
         ) : (
