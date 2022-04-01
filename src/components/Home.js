@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactTextTransition, { presets } from 'react-text-transition';
 import { getAllSpots } from '../api/spots';
 import SpotCard from './SpotCard';
+import { getLoggedInUserId } from '../lib/auth.js';
 
 const Home = () => {
   const [spots, setSpots] = React.useState(null);
@@ -23,6 +24,8 @@ const Home = () => {
 
   const texts = ['lakes', 'mountains', 'rivers', 'ly'];
   const [setText, updateText] = React.useState('');
+
+  console.log('userid', getLoggedInUserId());
 
   return (
     <>
@@ -51,25 +54,43 @@ const Home = () => {
                 around the country.
               </p>
 
-              <Link className="button is-success is-light" to="/register">
-                <span>Sign up</span>
-              </Link>
-              <p className="control has-text-white">
-                <span>Already have an account? </span>
-                <Link to="/login">
-                  <span className="has-text-success">Log in</span>
-                </Link>
-              </p>
+              {getLoggedInUserId() ? (
+                <span></span>
+              ) : (
+                <>
+                  <Link className="button is-success is-light" to="/register">
+                    <span>Sign up</span>
+                  </Link>
+                  <p className="control has-text-white">
+                    <span>Already have an account? </span>
+                    <Link to="/login">
+                      <span className="has-text-success">Log in</span>
+                    </Link>
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>
       </section>
-
       <section className="columns mt-6">
         {!spots ? (
           <p>Loading...</p>
         ) : (
-          spots.slice(0, 3).map((spot) => <SpotCard key={spot._id} {...spot} />)
+          spots
+            // .sort(spots.likedby.length)(function (a, b) {
+            //   return b - a;
+            // })
+            // .sort(spots.likedby.length)
+            .slice(0, 3)
+
+            .map((spot) => (
+              <>
+                <div className="is-parent m-4">
+                  <SpotCard key={spot._id} {...spot} />
+                </div>
+              </>
+            ))
         )}
       </section>
 

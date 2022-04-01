@@ -36,9 +36,15 @@ $warning: $outdoorsgreen;
     display: inline-block;
   }
 }
+
 .is-parent:hover {
-  transform: translate3D(-6px, -4px, 0) scale(1);
+  transform: translate3D(-6px, 0, 0) scale(1.05);
 }
+
+
+ 
+
+
 
 .pageloader {
   opacity: 0.9;

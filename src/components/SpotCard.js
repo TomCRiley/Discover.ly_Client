@@ -2,7 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getUserById } from '../api/spots';
 
-const SpotCard = ({ _id, title, location, img, activity, createdBy }) => {
+const SpotCard = ({
+  _id,
+  title,
+  location,
+  img,
+  activity,
+  createdBy,
+  likedBy,
+}) => {
   const [user, setUser] = React.useState(null);
 
   React.useEffect(() => {
@@ -40,26 +48,26 @@ const SpotCard = ({ _id, title, location, img, activity, createdBy }) => {
   }
 
   return (
-    <div className='column'>
+    <div className="column ">
       <Link to={`/spots/${_id}`}>
-        <div className='card is-rounded'>
-          <div className='card-image'>
-            <figure>
+        <div className="card is-rounded  ">
+          <div className="card-image">
+            <figure className="image">
               <img src={img} alt={title} />
             </figure>
-            <div className='activity-icon'>
-              <span className='icon has-text-white'>
-                <i className={`fas ${icon}`}></i>
+            <div className="activity-icon">
+              <span className="icon has-text-white">
+                <i className={`fas ${icon} fa-xl`}></i>
               </span>
             </div>
           </div>
-          <div className='card-content'>
-            <div className='title is-4'>{title}</div>
+          <div className="card-content">
+            <div className="title is-4">{title}</div>
             {user ? (
-              <p className='subtitle is-6'>{`@${user.username}`}</p>
+              <p className="subtitle is-6">{`@${user.username}`}</p>
             ) : null}
-
-            <p className='subtitle is-6'>{location}</p>
+            <p className="subtitle is-6">{location}</p>
+            {likedBy.length} <i className="fa-regular fa-heart fa-xl"></i>
           </div>
         </div>
       </Link>
