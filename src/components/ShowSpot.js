@@ -84,7 +84,7 @@ const ShowSpot = () => {
               </figure>
               <div className="activity-icon-large">
                 <span className="icon has-text-white">
-                  <i className={`fas ${icon} fa-2xl`}></i>
+                  <i className={`fas ${icon} fa-xl`}></i>
                 </span>
               </div>
             </div>
