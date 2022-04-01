@@ -150,9 +150,12 @@ const CreateSpot = () => {
                     Upload
                   </button>
                 </div>
-                <div className='column is-half'>
-                  <figure className='image is-3by3 '>
-                    <img className='image is-4by4' src={imageDisplay} />
+                <div className="column is-half">
+                  <figure className="image is-3by3 ">
+                    <img
+                      className="image is-4by4 has-radius-2"
+                      src={imageDisplay}
+                    />
                   </figure>
                 </div>
               </div>
