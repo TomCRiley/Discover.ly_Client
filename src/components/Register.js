@@ -9,6 +9,7 @@ export default function Register() {
   const [imageDisplay, updateImageDisplay] = useState(presetDefault);
   const [buildUserAnimation, updateBuildUserAnimation] = useState('');
   const [errorMessage, updateErrorMessage] = useState('');
+  const [progressBar, updateProgressBar] = useState('steps-segment');
 
   const [formData, updateFormData] = useState({
     username: '',
@@ -31,6 +32,37 @@ export default function Register() {
   });
 
   function handleChange(e) {
+    if (formData.email.length > 2) {
+      updateProgressBar('steps-segment is-active');
+    } else {
+      formData.email.length === 0;
+      updateProgressBar('steps-segment');
+      console.log('nada');
+    }
+    if (formData.username.length > 2) {
+      updateProgressBar('steps-segment is-active');
+    } else {
+      formData.username.length === 0;
+      updateProgressBar('steps-segment');
+      console.log('nada');
+    }
+
+    if (formData.password.length > 2) {
+      updateProgressBar('steps-segment is-active');
+    } else {
+      formData.password.length === 0;
+      updateProgressBar('steps-segment');
+      console.log('nada');
+    }
+
+    if (formData.passwordConfirmation.length > 2) {
+      updateProgressBar('steps-segment is-active');
+    } else {
+      formData.passwordConfirmation.length === 0;
+      updateProgressBar('steps-segment');
+      console.log('nada');
+    }
+
     const { name, value } = e.target;
     updateFormData({ ...formData, [name]: value });
     updateLoginData({ email: formData.email, password: formData.password });
@@ -96,31 +128,36 @@ export default function Register() {
       )
       .open();
   }
+
+  // function update() {
+  //   updateProgressBar('steps-segment is-active');
+  // }
+
   return (
     <>
-      <ul className="steps is-horizontal is-medium m-3">
-        <li className="steps-segment is-dashed">
+      <ul className="steps is-horizontal is-medium m-6">
+        <li className={`${progressBar}`}>
           <span className="steps-marker">
             <span className="icon">
               <i className="fa fa-heart"></i>
             </span>
           </span>
         </li>
-        <li className="steps-segment is-active">
+        <li className={`${progressBar}`}>
           <span className="steps-marker">
             <span className="icon">
               <i className="fa fa-circle-info"></i>
             </span>
           </span>
         </li>
-        <li className="steps-segment is-active">
+        <li className={`${progressBar}`}>
           <span className="steps-marker">
             <span className="icon">
               <i className="fa fa-circle-info"></i>
             </span>
           </span>
         </li>
-        <li className="steps-segment">
+        <li className={`${progressBar}`}>
           <span className="steps-marker">
             <span className="icon">
               <i className="fa fa-circle-check"></i>
@@ -146,32 +183,6 @@ export default function Register() {
                 </figure>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="tile is-ancestor">
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-person-biking"></i>
-              <p className="subtitle">Cycling</p>
-            </article>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-person-hiking"></i>
-              <p className="subtitle">Hiking</p>
-            </article>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-water"></i>
-              <p className="subtitle">Swimming</p>
-            </article>
-          </div>
-          <div className="tile is-parent">
-            <article className="tile is-child box">
-              <i className="fa fa-wine-bottle"></i>
-              <p className="subtitle">Boozing</p>
-            </article>
           </div>
         </div>
         <div className="container">
