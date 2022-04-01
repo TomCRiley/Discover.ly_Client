@@ -26,12 +26,12 @@ const Home = () => {
 
   return (
     <>
-      <section className="hero is-large hero-background">
-        <div className="hero-body">
-          <div className="container columns">
-            <div className="column is-two-thirds">
-              <h1 className="styled-title title has-text-white is-size-1">
-                <section className="inline">
+      <section className='hero is-large hero-background'>
+        <div className='hero-body'>
+          <div className='container columns'>
+            <div className='column is-two-thirds'>
+              <h1 className='styled-title title has-text-white is-size-1'>
+                <section className='inline'>
                   Discover.
                   <ReactTextTransition
                     text={setText}
@@ -43,7 +43,7 @@ const Home = () => {
                   />
                 </section>
               </h1>
-              <p className="subtitle has-text-white">
+              <p className='subtitle has-text-white'>
                 Discover.ly is a social discovery app for those who like to get
                 lost. Stumble across an untouched beach? How about when you took
                 that left turn that you never do on your daily run. Discover the
@@ -51,13 +51,13 @@ const Home = () => {
                 around the country.
               </p>
 
-              <Link className="button is-success is-light" to="/register">
+              <Link className='button is-success is-light' to='/register'>
                 <span>Sign up</span>
               </Link>
-              <p className="control has-text-white">
+              <p className='control has-text-white'>
                 <span>Already have an account? </span>
-                <Link to="/login">
-                  <span className="has-text-success">Log in</span>
+                <Link to='/login'>
+                  <span className='has-text-success'>Log in</span>
                 </Link>
               </p>
             </div>
@@ -65,7 +65,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="columns mt-6">
+      <section className='columns mt-6'>
         {!spots ? (
           <p>Loading...</p>
         ) : (
@@ -73,8 +73,8 @@ const Home = () => {
         )}
       </section>
 
-      <div className="has-text-centered mb-5">
-        <Link to="/discover" className="button is-warning p-5">
+      <div className='has-text-centered mb-5'>
+        <Link to='/discover' className='button is-warning p-5'>
           Discover more
         </Link>
       </div>
