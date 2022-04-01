@@ -91,69 +91,33 @@ function Discover() {
         {data.length === 0 ? (
           <p>No results</p>
         ) : (
-          data.map((spot, index) => (
+          data.map((spot) => (
             <Link to={`/spots/${spot._id}`} key={spot._id} className="columns">
-              {index % 2 === 0 ? (
-                <>
-                  <div className="column is-half">
-                    <div className="card-image">
-                      <figure className="image">
-                        <img src={spot.img} alt={spot.title} />
-                      </figure>
+              <div className="column is-one-third">
+                <div className="card-image">
+                  <figure className="image ">
+                    <img src={spot.img} alt={spot.title} />
+                  </figure>
 
-                      <div className="activity-icon-large">
-                        <span className="icon has-text-white">
-                          <i
-                            className={`fas ${getIcon(spot.activity)} fa-xl`}
-                          ></i>
-                        </span>
-                      </div>
-                    </div>
+                  <div className="activity-icon-large">
+                    <span className="icon has-text-white">
+                      <i className={`fas ${getIcon(spot.activity)} fa-xl`}></i>
+                    </span>
                   </div>
-                  <div className="column is-half">
-                    <div className="title">{spot.title}</div>
-                    <div className="subtitle">{spot.location}</div>
-                    <div className="has-text-black">{spot.description}</div>
+                </div>
+              </div>
+              <div className="column is-two-thirds">
+                <div className="title">{spot.title}</div>
+                <div className="subtitle">{spot.location}</div>
+                <div className="has-text-black">{spot.description}</div>
 
-                    <button className="button is-warning is-inverted">
-                      <span className="icon">
-                        <i className="fas fa-heart"></i>
-                      </span>
-                      <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="column is-half">
-                    <div className="title">{spot.title}</div>
-                    <div className="subtitle">{spot.location}</div>
-                    <div className="has-text-black">{spot.description}</div>
-
-                    <button className="button is-warning is-inverted">
-                      <span className="icon">
-                        <i className="fas fa-heart"></i>
-                      </span>
-                      <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
-                    </button>
-                  </div>
-                  <div className="column is-half">
-                    <div className="card-image">
-                      <figure className="image">
-                        <img src={spot.img} alt={spot.title} />
-                      </figure>
-
-                      <div className="activity-icon-large">
-                        <span className="icon has-text-white">
-                          <i
-                            className={`fas ${getIcon(spot.activity)} fa-xl`}
-                          ></i>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
+                <button className="button is-warning is-inverted">
+                  <span className="icon">
+                    <i className="fas fa-heart"></i>
+                  </span>
+                  <span>{spot.likedBy ? spot.likedBy.length : '0'}</span>
+                </button>
+              </div>
             </Link>
           ))
         )}
