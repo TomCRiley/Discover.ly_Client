@@ -9,7 +9,12 @@ export default function Register() {
   const [imageDisplay, updateImageDisplay] = useState(presetDefault);
   const [buildUserAnimation, updateBuildUserAnimation] = useState('');
   const [errorMessage, updateErrorMessage] = useState('');
-  const [progressBar, updateProgressBar] = useState('steps-segment');
+  const [progressBar1, updateProgressBar1] = useState(
+    'steps-segment is-active'
+  );
+  const [progressBar2, updateProgressBar2] = useState('steps-segment');
+  const [progressBar3, updateProgressBar3] = useState('steps-segment');
+  const [progressBar4, updateProgressBar4] = useState('steps-segment');
 
   const [formData, updateFormData] = useState({
     username: '',
@@ -32,36 +37,46 @@ export default function Register() {
   });
 
   function handleChange(e) {
-    if (formData.email.length < 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.email.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
+    if (formData.username.length !== 0) {
+      updateProgressBar2('steps-segment is-active');
+      updateProgressBar1('steps-segment');
+      console.log('notzero');
     }
-    if (formData.username.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.username.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
-    }
+    // else {
+    //   formData.username.length === 0;
+    //   updateProgressBar2('steps-segment');
+    //   console.log('nada');
+    // }
 
-    if (formData.password.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.password.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
+    if (formData.email.length !== 0) {
+      updateProgressBar2('steps-segment is-active');
     }
+    // else {
+    //   formData.email.length === 0;
+    //   updateProgressBar2('steps-segment');
+    //   console.log('nada');
+    // }
 
-    if (formData.passwordConfirmation.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.passwordConfirmation.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
+    if (formData.password.length !== 0) {
+      updateProgressBar3('steps-segment is-active');
+      updateProgressBar2('steps-segment ');
     }
+    // {
+    //   formData.password.length === 0;
+    //   updateProgressBar3('steps-segment');
+    //   console.log('nada');
+    // }
+    if (formData.passwordConfirmation.length !== 0) {
+      updateProgressBar4('steps-segment is-active');
+      updateProgressBar3('steps-segment ');
+      updateProgressBar2('steps-segment ');
+      updateProgressBar1('steps-segment ');
+    }
+    // else {
+    //   formData.passwordConfirmation.length === 0;
+    //   updateProgressBar4('steps-segment');
+    //   console.log('nada');
+    // }
 
     const { name, value } = e.target;
     updateFormData({ ...formData, [name]: value });
@@ -138,28 +153,28 @@ export default function Register() {
       <div className="has-background-info full-height-content is-justify-content-center is-flex is-align-items-center">
         <div className="container">
           <ul className="steps is-horizontal is-small m-4 p-2 ">
-            <li className={`${progressBar}`}>
+            <li className={`${progressBar1}`}>
               <span className="steps-marker">
                 <span className="icon">
-                  <i className="fa fa-heart"></i>
+                  <i className="fa fa-circle"></i>
                 </span>
               </span>
             </li>
-            <li className={`${progressBar}`}>
-              <span className="steps-marker">
-                <span className="icon">
-                  <i className="fa fa-circle-info"></i>
-                </span>
-              </span>
-            </li>
-            <li className={`${progressBar}`}>
+            <li className={`${progressBar2}`}>
               <span className="steps-marker">
                 <span className="icon">
                   <i className="fa fa-circle-info"></i>
                 </span>
               </span>
             </li>
-            <li className={`${progressBar}`}>
+            <li className={`${progressBar3}`}>
+              <span className="steps-marker">
+                <span className="icon">
+                  <i className="fa fa-lock"></i>
+                </span>
+              </span>
+            </li>
+            <li className={`${progressBar4}`}>
               <span className="steps-marker">
                 <span className="icon">
                   <i className="fa fa-circle-check"></i>
@@ -170,15 +185,17 @@ export default function Register() {
           <div className="box is-rounded p-6 mb-3">
             <div className="container full-height-content">
               <span>
-                <h1 className="title">Sign-Up</h1>
+                <h1 className="title has-text-left">Sign-Up</h1>
               </span>
 
               <div className="container level">
                 <div className="">
                   <div className="widget">
-                    <label className="label">Add a profile picture</label>
+                    <label className="label mt-6 pt-4">
+                      Add a profile picture
+                    </label>
                     <button
-                      className="button is-success "
+                      className="button is-warning "
                       onClick={handleUpload}
                     >
                       Upload
@@ -281,7 +298,7 @@ export default function Register() {
                     </div>
                   </div>
 
-                  <button className="button is-success " onClick={handleSubmit}>
+                  <button className="button is-warning " onClick={handleSubmit}>
                     Submit
                   </button>
                   <small className="has-text-danger"> {errorMessage}</small>

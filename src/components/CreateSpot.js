@@ -50,7 +50,7 @@ const CreateSpot = () => {
           cloudName: `${process.env.cloudName}`,
           uploadPreset: `${process.env.defaultSpot}`,
           cropping: true,
-          croppingAspectRatio: 1,
+          croppingAspectRatio: 2,
           multiple: false,
           maxImageFileSize: 5500000,
         },
@@ -152,10 +152,7 @@ const CreateSpot = () => {
                 </div>
                 <div className="column is-half">
                   <figure className="image is-3by3 ">
-                    <img
-                      className="image is-4by4 has-radius-2"
-                      src={imageDisplay}
-                    />
+                    <img className="image is-4by4" src={imageDisplay} />
                   </figure>
                 </div>
               </div>
