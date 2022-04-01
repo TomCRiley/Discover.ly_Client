@@ -62,7 +62,7 @@ const SpotCard = ({
             </div>
           </div>
           <div className="card-content">
-            <div className="title is-4">{title}</div>
+            <div className="title is-4 title-card">{title}</div>
             {user ? (
               <p className="subtitle is-6">{`@${user.username}`}</p>
             ) : null}
