@@ -22,7 +22,6 @@ function Map({ lat, lng, onChange, editable }) {
   const init = () => {
     //initialise map
     map.current = L.map('map', { zoomControl: false }).setView(
-      // [51.520847, -0.195521],
       [coordinates.lat, coordinates.lng],
       16
     );
@@ -45,11 +44,7 @@ function Map({ lat, lng, onChange, editable }) {
     });
     markers = [];
 
-    let marker = L.marker(
-      [lat, lng],
-      { icon: w3wIcon },
-      { draggable: 'true' }
-    ).addTo(map.current);
+    let marker = L.marker([lat, lng], { icon: w3wIcon }).addTo(map.current);
 
     // Create a marker for the location
     markers.push(marker);
@@ -77,11 +72,6 @@ function Map({ lat, lng, onChange, editable }) {
       console.log('Latitude is :', position.coords.latitude);
       console.log('Longitude is :', position.coords.longitude);
       updateMap(position.coords.latitude, position.coords.longitude);
-      // if ('geolocation' in navigator) {
-      //   console.log('Available');
-      // } else {
-      //   console.log('Not Available');
-      // }
     });
   };
 
