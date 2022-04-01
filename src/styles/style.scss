@@ -37,18 +37,18 @@ $warning: $outdoorsgreen;
   }
 }
 
+.card {
+  max-width: 300px;
+  white-space: normal;
+}
+
 .is-parent:hover {
   transform: translate3D(-6px, 0, 0) scale(1.05);
 }
 
-
- 
-
-
-
 .pageloader {
   opacity: 0.9;
-  background-color: hsla(121, 41%, 34%,);
+  background-color: hsla(121, 41%, 34%);
   color: white;
   font-size: xx-large;
 }
@@ -61,7 +61,7 @@ $warning: $outdoorsgreen;
 
 .activity-icon {
   position: absolute;
-  bottom: 16px;
+  bottom: 8px;
   right: 16px;
 }
 
@@ -112,9 +112,7 @@ $warning: $outdoorsgreen;
   color: #c59b08;
 }
 
-
 .leaflet-container {
   width: 100%;
   height: 100vh;
 }
-

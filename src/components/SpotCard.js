@@ -48,9 +48,9 @@ const SpotCard = ({
   }
 
   return (
-    <div className="column ">
+    <div className="column">
       <Link to={`/spots/${_id}`}>
-        <div className="card is-rounded  ">
+        <div className="card is-rounded">
           <div className="card-image">
             <figure className="image">
               <img src={img} alt={title} />
@@ -67,7 +67,13 @@ const SpotCard = ({
               <p className="subtitle is-6">{`@${user.username}`}</p>
             ) : null}
             <p className="subtitle is-6">{location}</p>
-            {likedBy.length} <i className="fa-regular fa-heart fa-xl"></i>
+
+            <button className="button is-warning is-inverted">
+              <span className="icon">
+                <i className="fas fa-heart"></i>
+              </span>
+              <span>{likedBy ? likedBy.length : '0'}</span>
+            </button>
           </div>
         </div>
       </Link>
