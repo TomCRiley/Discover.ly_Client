@@ -9,7 +9,12 @@ export default function Register() {
   const [imageDisplay, updateImageDisplay] = useState(presetDefault);
   const [buildUserAnimation, updateBuildUserAnimation] = useState('');
   const [errorMessage, updateErrorMessage] = useState('');
-  const [progressBar, updateProgressBar] = useState('steps-segment');
+  const [progressBar1, updateProgressBar1] = useState(
+    'steps-segment is-active'
+  );
+  const [progressBar2, updateProgressBar2] = useState('steps-segment');
+  const [progressBar3, updateProgressBar3] = useState('steps-segment');
+  const [progressBar4, updateProgressBar4] = useState('steps-segment');
 
   const [formData, updateFormData] = useState({
     username: '',
@@ -32,36 +37,46 @@ export default function Register() {
   });
 
   function handleChange(e) {
-    if (formData.email.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.email.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
+    if (formData.username.length !== 0) {
+      updateProgressBar2('steps-segment is-active');
+      updateProgressBar1('steps-segment');
+      console.log('notzero');
     }
-    if (formData.username.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.username.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
-    }
+    // else {
+    //   formData.username.length === 0;
+    //   updateProgressBar2('steps-segment');
+    //   console.log('nada');
+    // }
 
-    if (formData.password.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.password.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
+    if (formData.email.length !== 0) {
+      updateProgressBar2('steps-segment is-active');
     }
+    // else {
+    //   formData.email.length === 0;
+    //   updateProgressBar2('steps-segment');
+    //   console.log('nada');
+    // }
 
-    if (formData.passwordConfirmation.length > 2) {
-      updateProgressBar('steps-segment is-active');
-    } else {
-      formData.passwordConfirmation.length === 0;
-      updateProgressBar('steps-segment');
-      console.log('nada');
+    if (formData.password.length !== 0) {
+      updateProgressBar3('steps-segment is-active');
+      updateProgressBar2('steps-segment ');
     }
+    // {
+    //   formData.password.length === 0;
+    //   updateProgressBar3('steps-segment');
+    //   console.log('nada');
+    // }
+    if (formData.passwordConfirmation.length !== 0) {
+      updateProgressBar4('steps-segment is-active');
+      updateProgressBar3('steps-segment ');
+      updateProgressBar2('steps-segment ');
+      updateProgressBar1('steps-segment ');
+    }
+    // else {
+    //   formData.passwordConfirmation.length === 0;
+    //   updateProgressBar4('steps-segment');
+    //   console.log('nada');
+    // }
 
     const { name, value } = e.target;
     updateFormData({ ...formData, [name]: value });
@@ -135,152 +150,170 @@ export default function Register() {
 
   return (
     <>
-      <ul className="steps is-horizontal is-medium m-6">
-        <li className={`${progressBar}`}>
-          <span className="steps-marker">
-            <span className="icon">
-              <i className="fa fa-heart"></i>
-            </span>
-          </span>
-        </li>
-        <li className={`${progressBar}`}>
-          <span className="steps-marker">
-            <span className="icon">
-              <i className="fa fa-circle-info"></i>
-            </span>
-          </span>
-        </li>
-        <li className={`${progressBar}`}>
-          <span className="steps-marker">
-            <span className="icon">
-              <i className="fa fa-circle-info"></i>
-            </span>
-          </span>
-        </li>
-        <li className={`${progressBar}`}>
-          <span className="steps-marker">
-            <span className="icon">
-              <i className="fa fa-circle-check"></i>
-            </span>
-          </span>
-        </li>
-      </ul>
-
-      <div className="container full-height-content">
-        <h1 className="title">Sign-Up</h1>
-        <label className="label">Add a profile picture</label>
+      <div className="has-background-info full-height-content is-justify-content-center is-flex is-align-items-center">
         <div className="container">
-          <div className="columns">
-            <div className="column is-half">
-              <div className="widget">
-                <button className="button is-success " onClick={handleUpload}>
-                  Upload
-                </button>
+          <ul className="steps is-horizontal is-small m-4 p-2 ">
+            <li className={`${progressBar1}`}>
+              <span className="steps-marker">
+                <span className="icon">
+                  <i className="fa fa-circle"></i>
+                </span>
+              </span>
+            </li>
+            <li className={`${progressBar2}`}>
+              <span className="steps-marker">
+                <span className="icon">
+                  <i className="fa fa-circle-info"></i>
+                </span>
+              </span>
+            </li>
+            <li className={`${progressBar3}`}>
+              <span className="steps-marker">
+                <span className="icon">
+                  <i className="fa fa-lock"></i>
+                </span>
+              </span>
+            </li>
+            <li className={`${progressBar4}`}>
+              <span className="steps-marker">
+                <span className="icon">
+                  <i className="fa fa-circle-check"></i>
+                </span>
+              </span>
+            </li>
+          </ul>
+          <div className="box is-rounded p-6 mb-3">
+            <div className="container full-height-content">
+              <span>
+                <h1 className="title has-text-left">Sign-Up</h1>
+              </span>
+
+              <div className="container level">
+                <div className="">
+                  <div className="widget">
+                    <label className="label mt-6 pt-4">
+                      Add a profile picture
+                    </label>
+                    <button
+                      className="button is-warning "
+                      onClick={handleUpload}
+                    >
+                      Upload
+                    </button>
+                  </div>
+                </div>
+                <span className="">
+                  <figure className="image is-128x128 ">
+                    <img className="is-rounded " src={imageDisplay} />
+                  </figure>
+                </span>
               </div>
-              <div className="column is-half">
-                <figure className="image is-128x128 ">
-                  <img className="is-rounded " src={imageDisplay} />
-                </figure>
+
+              <div className="container">
+                <form onSubmit={handleSubmit}>
+                  <div className="field">
+                    <label className="label">
+                      Username{' '}
+                      <small className="has-text-danger">
+                        {required.username}
+                      </small>
+                    </label>
+                    <div className="control has-icons-left">
+                      <input
+                        className="input"
+                        placeholder="discoverlyuser"
+                        type="text"
+                        value={formData.username}
+                        onChange={handleChange}
+                        name={'username'}
+                      />
+
+                      <span className="icon is-left">
+                        <i className="fas fa-user"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">
+                      Email{' '}
+                      <small className="has-text-danger">
+                        {required.email}
+                      </small>
+                    </label>
+
+                    <div className="control has-icons-left">
+                      <input
+                        className="input"
+                        placeholder="discoverlyuser@example.com"
+                        type="text"
+                        value={formData.email}
+                        onChange={handleChange}
+                        name={'email'}
+                      />
+                      <span className="icon is-left">
+                        <i className="fas fa-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">
+                      Password{' '}
+                      <small className="has-text-danger">
+                        {required.password}
+                      </small>
+                    </label>
+                    <div className="control has-icons-left">
+                      <input
+                        className="input"
+                        placeholder=""
+                        type="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        name={'password'}
+                      />
+                      <span className="icon is-left">
+                        <i className="fas fa-lock"></i>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label className="label">
+                      Confirm password{' '}
+                      <small className="has-text-danger">
+                        {required.passwordConfirmation}
+                      </small>
+                    </label>
+                    <div className="control has-icons-left">
+                      <input
+                        className="input"
+                        placeholder=""
+                        type="password"
+                        value={formData.passwordConfirmation}
+                        onChange={handleChange}
+                        name={'passwordConfirmation'}
+                      />
+                      <span className="icon is-left">
+                        <i className="fas fa-lock"></i>
+                      </span>
+                    </div>
+                  </div>
+
+                  <button className="button is-warning " onClick={handleSubmit}>
+                    Submit
+                  </button>
+                  <small className="has-text-danger"> {errorMessage}</small>
+                </form>
+                <br />
+                <p className="control">
+                  <span>Already have an account? </span>
+                  <a href="/login">
+                    <span>Login</span>
+                  </a>
+                </p>
+                {buildUserAnimation}
               </div>
             </div>
           </div>
-        </div>
-        <div className="container">
-          <form onSubmit={handleSubmit}>
-            <div className="field">
-              <label className="label">
-                Username{' '}
-                <small className="has-text-danger">{required.username}</small>
-              </label>
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  placeholder="discoverlyuser"
-                  type="text"
-                  value={formData.username}
-                  onChange={handleChange}
-                  name={'username'}
-                />
-
-                <span className="icon is-left">
-                  <i className="fas fa-user"></i>
-                </span>
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">
-                Email{' '}
-                <small className="has-text-danger">{required.email}</small>
-              </label>
-
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  placeholder="discoverlyuser@example.com"
-                  type="text"
-                  value={formData.email}
-                  onChange={handleChange}
-                  name={'email'}
-                />
-                <span className="icon is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">
-                Password{' '}
-                <small className="has-text-danger">{required.password}</small>
-              </label>
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  placeholder=""
-                  type="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  name={'password'}
-                />
-                <span className="icon is-left">
-                  <i className="fas fa-lock"></i>
-                </span>
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">
-                Confirm password{' '}
-                <small className="has-text-danger">
-                  {required.passwordConfirmation}
-                </small>
-              </label>
-              <div className="control has-icons-left">
-                <input
-                  className="input"
-                  placeholder=""
-                  type="password"
-                  value={formData.passwordConfirmation}
-                  onChange={handleChange}
-                  name={'passwordConfirmation'}
-                />
-                <span className="icon is-left">
-                  <i className="fas fa-lock"></i>
-                </span>
-              </div>
-            </div>
-
-            <button className="button is-success " onClick={handleSubmit}>
-              Submit
-            </button>
-            <small className="has-text-danger"> {errorMessage}</small>
-          </form>
-          <br />
-          <p className="control">
-            <span>Already have an account? </span>
-            <a href="/login">
-              <span>Login</span>
-            </a>
-          </p>
-          {buildUserAnimation}
         </div>
       </div>
     </>
