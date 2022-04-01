@@ -45,9 +45,9 @@ const UserProfile = () => {
       return <p>No spots...</p>;
     } else {
       return (
-        <section className="scrolling-wrapper">
+        <section className='scrolling-wrapper'>
           {spotsArray.map((spot) => (
-            <div className="cardzz is-rounded" key={spot._id}>
+            <div className='cardzz is-rounded' key={spot._id}>
               <SpotCard key={spot._id} {...spot} />
             </div>
           ))}
@@ -63,61 +63,53 @@ const UserProfile = () => {
   }
 
   return (
-    <section className="hero full-height-content">
-      <div className="hero-body">
-        <div className="container">
-          <div className="columns">
-            <div className="column is-8 is-offset-2">
-              <figure className="image is-128x128">
+    <section className='hero full-height-content'>
+      <div className='hero-body'>
+        <div className='container'>
+          <div className='columns'>
+            <div className='column is-8 is-offset-2'>
+              <figure className='image is-128x128'>
                 <img
-                  className="is-rounded"
+                  className='is-rounded'
                   src={user.profileImage}
-                  alt="profile pic"
+                  alt='profile pic'
                 />
               </figure>
             </div>
           </div>
 
-          <section className="section">
-            <div className="columns">
-              <div className="column is-8 is-offset-2">
-                <div className="content is-medium">
-                  <h2 className="subtitle is-5">Hi, friend!</h2>
-                  <p className="is-7">
+          <section className='section'>
+            <div className='columns'>
+              <div className='column is-8 is-offset-2'>
+                <div className='content is-medium'>
+                  <h2 className='subtitle is-5'>Hi, friend!</h2>
+                  <h1 className='title'>@{user.username}</h1>
+                  <p className='is-7'>
                     When you&apos;re logged in, you get access to all the spots
-                    you discovered. Feel free to add a bio about yourself so
-                    other users can learn more about you. This is your page!{' '}
+                    you discovered.
                   </p>
-                  <h1 className="title">@{user.username}</h1>
-                  <p>
-                    USER BIO - during register users selected preferences /
-                    consequatur vel eius. Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Dolore sunt porro labore nemo adipisci
-                    vitae ea ullam veniam ad sapiente facere commodi fugiat,
-                    corrupti iusto quas expedita nesciunt reiciendis
-                    necessitatibus.
-                  </p>
+                  <p>Check out the places you've liked, too!</p>
                 </div>
               </div>
             </div>
           </section>
 
           <section>
-            <h3 className="title is-5">Your spots</h3>
-            <div className="">
+            <h3 className='title is-5'>Your spots</h3>
+            <div className=''>
               {!createdSpots ? <p>Loading...</p> : spotsLength(createdSpots)}
             </div>
           </section>
 
-          <section className="my-6">
-            <h3 className="title is-5">Liked spots</h3>
-            <div className="">
+          <section className='my-6'>
+            <h3 className='title is-5'>Liked spots</h3>
+            <div className=''>
               {!likedSpots ? <p>Loading...</p> : spotsLength(likedSpots)}
             </div>
           </section>
 
-          <div className="has-text-centered">
-            <Link to="/discover" className="button is-warning">
+          <div className='has-text-centered'>
+            <Link to='/discover' className='button is-warning'>
               Discover more
             </Link>
           </div>
