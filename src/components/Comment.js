@@ -1,7 +1,8 @@
 import React from 'react';
 import { getUserById } from '../api/spots';
+import { getLoggedInUserId } from '../lib/auth.js';
 
-const Comment = ({ text, rating, updatedAt, createdBy }) => {
+const Comment = ({ text, rating, updatedAt, createdBy, onClick }) => {
   const [user, setUser] = React.useState(null);
 
   React.useEffect(() => {
@@ -12,6 +13,13 @@ const Comment = ({ text, rating, updatedAt, createdBy }) => {
 
     getData();
   }, []);
+
+  const isOwnComment = () => {
+    if (getLoggedInUserId() === createdBy) {
+      return true;
+    }
+    return false;
+  };
 
   return (
     <div className="notification">
@@ -29,9 +37,20 @@ const Comment = ({ text, rating, updatedAt, createdBy }) => {
           </div>
         </div>
       </div>
-      <div>
-        <p>{rating}/5</p>
-        <p>{text}</p>
+      <div className="level">
+        <div className="level-left">
+          <p className="level-item">{rating}/5</p>
+          <p className="level-item">{text}</p>
+        </div>
+        {isOwnComment() && (
+          <div className="level-right">
+            <button type="button" onClick={onClick}>
+              <span className="icon">
+                <i className="fas fa-trash-can"></i>
+              </span>
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

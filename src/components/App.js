@@ -12,9 +12,14 @@ import Discover from './Discover';
 import CreateSpot from './CreateSpot';
 import UserProfile from './UserProfile';
 import AboutUs from './AboutUs';
+import MapExperi from './MapExperi';
 
 import '../styles/style.scss';
-import MapExperi from './MapExperi';
+import axios from 'axios';
+
+if (process.env.NODE_ENV === 'production') {
+  axios.defaults.baseURL = 'https://gap3discoverlyapp.herokuapp.com';
+}
 
 const App = () => (
   <BrowserRouter>

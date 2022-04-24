@@ -69,7 +69,20 @@ export const getUserById = async (userId) => {
 export const likeSpot = async (id) => {
   const options = {
     method: 'PUT',
-    url: `/api/spots/${id}/likes`,
+    url: `/api/spots/${id}/like`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+  const { data } = await axios.request(options);
+
+  return data;
+};
+
+export const unlikeSpot = async (id) => {
+  const options = {
+    method: 'PUT',
+    url: `/api/spots/${id}/unlike`,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
     },
@@ -98,6 +111,19 @@ export const createComment = async (id, comment) => {
     method: 'POST',
     url: `/api/spots/${id}/comments`,
     data: comment,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+  const { data } = await axios.request(options);
+
+  return data;
+};
+
+export const deleteComment = async (id, commentId) => {
+  const options = {
+    method: 'DELETE',
+    url: `/api/spots/${id}/comments/${commentId}`,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
     },

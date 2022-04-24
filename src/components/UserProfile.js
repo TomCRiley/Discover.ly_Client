@@ -63,7 +63,7 @@ const UserProfile = () => {
   }
 
   return (
-    <section className="hero full-height-content">
+    <section className="hero full-height-content mb-5">
       <div className="has-background-info p-4 mb-4">
         <div className="columns py-6">
           <div className="column is-6 is-offset-2">
