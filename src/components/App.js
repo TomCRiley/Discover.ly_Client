@@ -12,7 +12,6 @@ import Discover from './Discover';
 import CreateSpot from './CreateSpot';
 import UserProfile from './UserProfile';
 import AboutUs from './AboutUs';
-import MapExperi from './MapExperi';
 
 import '../styles/style.scss';
 import axios from 'axios';
@@ -34,7 +33,6 @@ const App = () => (
       <Route path="/add" element={<CreateSpot />} />
       <Route path="/profile" element={<UserProfile />} />
       <Route path="/aboutus" element={<AboutUs />} />
-      <Route path="/mapexperi" element={<MapExperi />} />
     </Routes>
     <Footer />
   </BrowserRouter>
