@@ -22,7 +22,6 @@ function Map({ lat, lng, onChange, editable }) {
   const init = () => {
     //initialise map
     map.current = L.map('map', { zoomControl: false }).setView(
-      // [51.520847, -0.195521],
       [coordinates.lat, coordinates.lng],
       16
     );
@@ -105,50 +104,3 @@ function Map({ lat, lng, onChange, editable }) {
 }
 
 export default Map;
-
-// import React, { useState, useffect } from 'react';
-// import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-
-// import 'leaflet/dist/leaflet.css';
-// import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-// import 'leaflet-defaulticon-compatibility';
-// import 'leaflet/dist/images/marker-shadow.png';
-// import 'leaflet/dist/images/marker-icon.png';
-
-// function Map({ lat, lng }) {
-//   const [position, setPosition] = React.useState([51.505, -0.09]);
-//   const [map, setMap] = useState();
-//   const handleGps = () => {
-//     navigator.geolocation.getCurrentPosition((location) => {
-//       setPosition([location.coords.latitude, location.coords.longitude]);
-//     });
-//   };
-
-//   return (
-//     <>
-//       <button
-//         id='w3wbutton'
-//         className='button is-info is-light'
-//         onClick={handleGps}
-//         type='button'
-//       >
-//         Locate me
-//       </button>
-//       <div className='map-container'>
-//         <MapContainer key={position[0]} center={position} zoom={13}>
-//           <TileLayer
-//             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-//             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-//           />
-//           <Marker position={position}>
-//             <Popup>
-//               A pretty CSS3 popup. <br /> Easily customizable.
-//             </Popup>
-//           </Marker>
-//         </MapContainer>
-//       </div>
-//     </>
-//   );
-// }
-
-// export default Map;
