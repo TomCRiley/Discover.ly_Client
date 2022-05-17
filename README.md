@@ -1,5 +1,4 @@
 # ReadMe
-#GA/projects/project-3/readMe
 
 # 🌎Discover.ly🌎
 We deployed this website using Heroku ➡️[HERE](https://discoverly.netlify.app/)⬅️. The free servers on Heroku sleep when they are not in use, so please allow a few seconds for them to wake up! 😴
