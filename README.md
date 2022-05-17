@@ -3,6 +3,8 @@
 # 🌎Discover.ly Client🌎
 We deployed this website using Heroku ➡️[HERE](https://discoverly.netlify.app/)⬅️. The free servers on Heroku sleep when they are not in use, so please allow a few seconds for them to wake up! 😴
 
+You can find the API side of the project ➡️[HERE](https://github.com/TomCRiley/discover.ly_api#readme)⬅️
+
 ### Developers
 [Tom Riley](https://github.com/TomCRiley)
 [Ashley Gyngell](https://github.com/ashleygyngell)
