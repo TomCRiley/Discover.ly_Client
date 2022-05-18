@@ -76,11 +76,6 @@ function Map({ lat, lng, onChange, editable }) {
       console.log('Latitude is :', position.coords.latitude);
       console.log('Longitude is :', position.coords.longitude);
       updateMap(position.coords.latitude, position.coords.longitude);
-      // if ('geolocation' in navigator) {
-      //   console.log('Available');
-      // } else {
-      //   console.log('Not Available');
-      // }
     });
   };
 
