@@ -226,6 +226,7 @@ Just as importantly, writing readable code is important. The Map function had ma
 As mentioned, we did iterate very quickly and managed to include most of our wishlist features. Something we didn’t manage to implement was a user bio that a user could update after registration. 
 
 ## More about me
-You can find me at www.tomriley.dev where I maintain all my live portfolio projects. You can also contact me [‘mailto:hello@tomriley.dev’] 
+You can find me at www.tomriley.dev where I maintain all my live portfolio projects. You can also email me ➡️[📧(click me!)](mailto:hello@tomriley.dev)⬅️  
 
-I’m a junior software engineer with a whole lot of love for tech and learning. Connect with me on LinkedIn! 
+I’m a junior software engineer with a whole lot of love for tech and learning. Connect with me on [LinkedIn](https://www.linkedin.com/in/tomcriley/)!
+
