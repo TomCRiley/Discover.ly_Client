@@ -69,8 +69,60 @@ You can find the API side of the project ➡️[HERE](https://github.com/TomCRil
 ## The Build
 * We were placed into groups of three. For us, it was alarmingly easy to come up with a concept for a project. We wanted to build something social, something that represented the different corners of England that we live in and something that would be flexible enough to be expanded upon should we reach our MVP in good time.
 * We came up with a social discovery app, where users can post their favourite running routes or hiking locations. Our MVP would be to post and upload pictures, and our stretch goals would include vital things like mapping (though important, we thought it could be a huge time-sink).
-* We worked in an Agile methodology, with daily stand ups and some pair programming when necessary. 
+* Working in an Agile methodology, with daily stand ups and some pair programming when necessary, helped us keep organised and aware of what each other was doing.
 * Primarily, we worked with version control through Git and on our own branches of the repository. Occasionally there were some merge conflicts, but these were generally avoided as we worked siloed into our own components or pre defined tasks that we would take from the Trello board.
+* 
+I primarily worked on the NavBar, user profile page, mapping elements and the homepage. 
+
+On the user profile page, I needed to be able to dynamically update the users information when they had registered for an account and when they logged in. The general goal was to show the places that they’d ‘liked’, dynamically update their profile picture and also display their username.
+
+I used React useState and useEffect to return the user information depending on the login credentials. 
+
+```JavaScript
+ const [createdSpots, setCreatedSpots] = React.useState(null);
+ const [likedSpots, setLikedSpots] = React.useState(null);
+ const [user, setUser] = React.useState({});
+ 
+ React.useEffect(() => {
+   const getData = async () => {
+     const user = await getUserById(getLoggedInUserId());
+     const createdSpots = await getAllSpotsForUser(user._id);
+     setUser(user);
+     setCreatedSpots(createdSpots);
+   };
+ 
+   getData();
+ }, []);
+```
+
+Here, I am grabbing the user with an asynchronous ‘await’, and setting the state to the current logged in user. I’m also setting state for the ‘spots’ that the user has created on our app. 
+```JavaScript
+<div className="container">
+       <section>
+         <h3 className="title is-5">Your spots</h3>
+         <div className="">
+           {!createdSpots ? <p>Loading...</p> : spotsLength(createdSpots)}
+         </div>
+       </section>
+
+```
+Above, you can see that I’ve used a ternary statement to employ the useEffect if the user has created any ‘spots’ on our app, if not, the JSX will return a Loading… <p>
+
+There are similar applications of useState across the page, for example with the username and profile picture: 
+```JavaScript
+<h1 className="title">@{user.username}</h1>
+```
+``` JavaScript
+<figure className="image is-128x128">
+             <img
+               className="is-rounded"
+               src={user.profileImage}
+               alt="profile pic"
+             />
+           </figure>
+```
+
+<hr/>
 
 ```JavaScript
 const createComment = async (req, res, next) => {
@@ -148,12 +200,32 @@ Lastly, to implement the comment we used React useEffect to grab the data from t
 
 <img width="740" alt="RnI0GVotsH6BMZHFS0tfYhWOiu0eC5STZPp8yr0yWPElBuj-bf_V2MgqOC6ehxYxSZTPVRvJVtnkbktWPQT2rhh6hnYlUFpJbYGvf1mIKgCnCmimbGjU-Uk85gLt3iSfcmntHgKY4D9g-C9_hQ" src="https://user-images.githubusercontent.com/97558359/168837286-a2e9e47f-b59d-44a5-9abd-0292df9066e0.png">
 
-## Wins
+## Wins & Challenges
 This was a huge step up in complexity from my previous hackathon project. I really enjoyed the project management aspect of this early on, deciphering what we needed to do as soon as possible for MVP and feeding back to our teachers in stand ups. 
 
 I also found it was great experiencing working in teams with a fuller understanding of version control and how to merge independent features together. We iterated extremely fast because of this and my teammates Elise and Ash came just as ready as I did every single day to smash the project. It was a really collaborative environment where we implemented as many ideas as we could think of.
 
 I personally am very proud of managing to get maps into the website, especially implementing the ‘pin’ functionality of Leaflet.js and customising it to include the logo I had designed. 
 
+I did have some challenges, I think learning how to read documentation (namely Leaflet.js’) was a major lightbulb moment for me during this project. It can’t be rushed because the detail really matters. 
+
+Just as importantly, writing readable code is important. The Map function had many, many iterations; at first, I tried implementing autosuggest for locations using the What3Words API. This would allow a user to search for their location using the W3W app, and then get an ultra precise but easy-to-parse location. Turns out, JavaScript has this built in with the navigator geolocation function. This was much quicker to implement:
+
+``` JavaScript
+ const handleGps = () => {
+   navigator.geolocation.getCurrentPosition(function (position) {
+     console.log('Latitude is :', position.coords.latitude);
+     console.log('Longitude is :', position.coords.longitude);
+     updateMap(position.coords.latitude, position.coords.longitude);
+   });
+ };
+```
+
+
 ## Stretch Goals
 As mentioned, we did iterate very quickly and managed to include most of our wishlist features. Something we didn’t manage to implement was a user bio that a user could update after registration. 
+
+## More about me
+You can find me at www.tomriley.dev where I maintain all my live portfolio projects. You can also contact me [‘mailto:hello@tomriley.dev’] 
+
+I’m a junior software engineer with a whole lot of love for tech and learning. Connect with me on LinkedIn! 
